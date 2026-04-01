@@ -3,13 +3,32 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
-import { products } from '../data/products';
+import { products as defaultProducts } from '../data/products';
 import ProductCard from './ProductCard';
 
+const STORAGE_KEY = 'berakah_products_override';
 const CATEGORIES = ["Todos", "Bandoleras", "Bolsas", "Mochilas", "Portacelulares", "Esenciales"];
+
+// Leer productos con cambios del admin (localStorage) o usar los originales
+function loadProducts() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : defaultProducts;
+  } catch {
+    return defaultProducts;
+  }
+}
 
 function Catalog({ onAddToCart }) {
   const [activeCategory, setActiveCategory] = useState("Todos");
+  const [products, setProducts] = useState(loadProducts);
+
+  // Recargar si el localStorage cambia (cuando se vuelve del panel admin)
+  useEffect(() => {
+    const handleFocus = () => setProducts(loadProducts());
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
+  }, []);
 
   const sectionRef = useRef(null);
 
