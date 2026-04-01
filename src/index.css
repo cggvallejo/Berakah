@@ -230,13 +230,7 @@ section { padding: var(--sp-section) 0; }
 .logo-glow-soft { text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
 
 /* ─── CHATBOT MOBILE ─────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
-  /* Chatbot ocupa más pantalla en mobile */
-  .chatbot-window {
-    width: calc(100vw - 2rem) !important;
-    right: -0.5rem !important;
-  }
-}
+/* El chatbot usa estilos inline + .bk-chat-window (definidos en Chatbot.jsx) */
 
 /* ─── HERO MOBILE ────────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
