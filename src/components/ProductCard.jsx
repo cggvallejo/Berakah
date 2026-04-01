@@ -9,7 +9,8 @@ function ProductCard({ product, onAdd }) {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-[1.5s] scale-[1.12] group-hover:scale-[1.22]"
+          style={{ objectPosition: 'center 8%' }}
           loading="lazy"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700" />
