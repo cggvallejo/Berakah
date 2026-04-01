@@ -68,7 +68,7 @@ function Hero() {
           {/* Decorative Frame Lines */}
           <div className="absolute -inset-x-10 top-0 bottom-0 border-x border-accent/5 pointer-events-none hidden md:block" />
           
-          <h1 className="text-6xl md:text-8xl mb-6 leading-[1.1] text-accent tracking-tighter uppercase font-light">
+          <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl mb-4 md:mb-6 leading-[1.1] text-accent tracking-tighter uppercase font-light">
             <span ref={title1Ref} className="block overflow-hidden">
               <span className="block">Artesanía en</span>
             </span>
@@ -77,7 +77,7 @@ function Hero() {
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-accent/80 max-w-xl mx-auto mb-1 font-light tracking-wide px-6">
+          <p className="hero-subtitle text-base md:text-xl text-accent/80 max-w-xl mx-auto mb-1 font-light tracking-wide px-4 md:px-6">
             Descubre piezas únicas diseñadas con la esencia de México, donde lo rústico se encuentra con la sofisticación contemporánea.
           </p>
         </div>

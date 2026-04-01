@@ -1,21 +1,43 @@
 @import "tailwindcss";
 
+/* ─── FUENTES ────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ─── TOKENS DE DISEÑO ───────────────────────────────────────────────────────── */
 :root {
   --color-bg: #fdfcf8;
   --color-text: #1a1a1a;
-  --color-accent: #4a3728; /* Jute brown */
+  --color-accent: #4a3728;
   --color-gold: #d4af37;
   --color-green: #006847;
   --color-red: #ce1126;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Montserrat', sans-serif;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Fluid type scale (base 16px desktop, 15px mobile) ── */
+  --text-xs:    clamp(0.7rem,  1.8vw, 0.75rem);
+  --text-sm:    clamp(0.85rem, 2.2vw, 0.875rem);
+  --text-base:  clamp(0.95rem, 2.5vw, 1rem);
+  --text-lg:    clamp(1.05rem, 3vw,   1.125rem);
+  --text-xl:    clamp(1.1rem,  3.5vw, 1.25rem);
+  --text-2xl:   clamp(1.3rem,  4vw,   1.5rem);
+  --text-3xl:   clamp(1.6rem,  5vw,   1.875rem);
+  --text-4xl:   clamp(2rem,    6vw,   2.25rem);
+  --text-hero:  clamp(2.8rem,  10vw,  5rem);
+
+  /* ── Spacing ── */
+  --sp-section: clamp(4rem, 10vw, 8rem);
+  --sp-container: clamp(1rem, 5vw, 2rem);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ─── RESET ──────────────────────────────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  /* Prevent font inflation on mobile */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -25,6 +47,9 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-size: var(--text-base);
+  /* Prevent horizontal overflow on mobile */
+  max-width: 100vw;
 }
 
 h1, h2, h3, h4 {
@@ -33,11 +58,7 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
-}
+a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 button {
   cursor: pointer;
@@ -45,9 +66,11 @@ button {
   background: none;
   font-family: var(--font-sans);
   transition: var(--transition);
+  /* Minimum touch target */
+  min-height: 44px;
 }
 
-/* Premium Utilities */
+/* ─── UTILIDADES ─────────────────────────────────────────────────────────────── */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -55,65 +78,43 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.premium-shadow {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.text-reveal {
-  overflow: hidden;
-}
+.premium-shadow { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+.text-reveal { overflow: hidden; }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--sp-container);
 }
 
-/* Section transitions */
-section {
-  padding: 8rem 0;
-}
+section { padding: var(--sp-section) 0; }
 
-/* Animations base */
+/* ─── ANIMACIONES ────────────────────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.animate-in { animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
-.animate-in {
-  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.slide-in {
-  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.scale-in {
-  animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+.slide-in { animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.scale-in { animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 @keyframes slideInRight {
   from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  to   { transform: translateX(0); }
 }
-
 @keyframes scaleIn {
   from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Rediseño robusto del Catálogo */
+/* ─── CATÁLOGO ───────────────────────────────────────────────────────────────── */
 .premium-filter-container {
   display: flex !important;
-  gap: 1.5rem !important;
+  gap: clamp(0.75rem, 2vw, 1.5rem) !important;
   align-items: center;
   flex-wrap: wrap;
   border-bottom: 1px solid rgba(74, 55, 40, 0.1);
@@ -122,31 +123,27 @@ section {
 
 .premium-grid {
   display: grid !important;
-  gap: 3rem 2rem !important;
+  gap: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 2.5vw, 2rem) !important;
   grid-template-columns: repeat(2, 1fr) !important;
 }
 
 @media (min-width: 1024px) {
-  .premium-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
+  .premium-grid { grid-template-columns: repeat(4, 1fr) !important; }
 }
 
 .filter-btn {
-  font-size: 10px;
+  font-size: var(--text-xs);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 700;
   color: rgba(74, 55, 40, 0.4);
   position: relative;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   transition: all 0.3s ease;
+  min-height: 44px;
 }
 
-.filter-btn.active {
-  color: var(--color-accent);
-}
-
+.filter-btn.active { color: var(--color-accent); }
 .filter-btn.active::after {
   content: '';
   position: absolute;
@@ -157,41 +154,37 @@ section {
   background-color: var(--color-gold);
 }
 
-/* Gold Shimmer Effect */
-.shimmer-gold {
-  position: relative;
-  overflow: hidden;
+/* ─── PRODUCTO: MOBILE (botón siempre visible) ───────────────────────────────── */
+/* En mobile el hover no existe — mostramos el botón "añadir" siempre */
+@media (max-width: 768px) {
+  .product-actions {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+  .product-name { font-size: var(--text-sm) !important; }
+  .product-price { font-size: var(--text-sm) !important; }
+  .product-category { font-size: 0.6rem !important; }
+  .product-desc { display: none !important; }
 }
 
+/* ─── SHIMMER ────────────────────────────────────────────────────────────────── */
+.shimmer-gold { position: relative; overflow: hidden; }
 .shimmer-gold::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 45%,
-    rgba(212, 175, 55, 0.1) 48%,
-    rgba(212, 175, 55, 0.4) 50%,
-    rgba(212, 175, 55, 0.1) 52%,
-    transparent 55%
-  );
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent 45%, rgba(212,175,55,0.1) 48%, rgba(212,175,55,0.4) 50%, rgba(212,175,55,0.1) 52%, transparent 55%);
   transform: rotate(25deg);
   animation: shimmer 6s infinite;
 }
-
 @keyframes shimmer {
-  0% { transform: translateX(-100%) rotate(25deg); }
+  0%       { transform: translateX(-100%) rotate(25deg); }
   20%, 100% { transform: translateX(100%) rotate(25deg); }
 }
 
-/* Weaving Text Base */
-.char-step {
-  display: inline-block;
-  opacity: 0;
-}
+/* ─── TEXTO / LOGO ───────────────────────────────────────────────────────────── */
+.char-step { display: inline-block; opacity: 0; }
 
 .premium-gradient-text {
   background: linear-gradient(to right, #1a1a1a 0%, #4a3728 100%);
@@ -200,7 +193,6 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-/* Golden Logo Writing Effects (Editorial Style) */
 .logo-stroke {
   -webkit-text-stroke: 0.5px var(--color-gold);
   color: transparent;
@@ -211,7 +203,6 @@ section {
 }
 
 .logo-write-on {
-  /* clip-path inicial manejado por JS para evitar invisibilidad en caso de error de script */
   background: var(--color-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -219,12 +210,12 @@ section {
   display: inline-block;
   white-space: nowrap;
   overflow: visible !important;
-  padding: 0 0.5em; /* Espacio para remates caligráficos */
-  margin: 0 -0.5em; /* Centrado compensatorio */
+  padding: 0 0.5em;
+  margin: 0 -0.5em;
 }
 
 .logo-container-fix {
-  padding: 0 5rem; /* Margen de maniobra generoso */
+  padding: 0 clamp(1rem, 5vw, 5rem);
   margin: 0 -0.2rem;
   overflow: visible !important;
 }
@@ -233,14 +224,53 @@ section {
   overflow: visible !important;
   display: inline-block;
   position: relative;
-  padding-left: 0.1em; /* Sidebearing safety global */
+  padding-left: 0.1em;
 }
 
-.logo-glow-soft {
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+.logo-glow-soft { text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+
+/* ─── CHATBOT MOBILE ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Chatbot ocupa más pantalla en mobile */
+  .chatbot-window {
+    width: calc(100vw - 2rem) !important;
+    right: -0.5rem !important;
+  }
 }
 
+/* ─── HERO MOBILE ────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-title { font-size: clamp(2.5rem, 12vw, 4rem) !important; }
+  .hero-subtitle { font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important; }
+  .hero-cta { padding: 1rem 2.5rem !important; font-size: 0.7rem !important; }
+}
 
+/* ─── CART MODAL MOBILE ──────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Panel occupa toda la pantalla en mobile */
+  .cart-panel {
+    max-width: 100% !important;
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+}
 
+/* ─── NAVBAR MOBILE ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar-logo-scroll { font-size: 1rem !important; }
+}
 
-
+/* ─── TIPOGRAFÍA FLUID PARA SECCIONES ────────────────────────────────────────── */
+.section-title {
+  font-size: var(--text-3xl);
+  font-family: var(--font-serif);
+}
+.section-subtitle {
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+.label-upper {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}

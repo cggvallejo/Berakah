@@ -30,7 +30,7 @@ function App() {
 
       <Footer />
       
-      <Chatbot />
+      <Chatbot cartItems={cart} />
       
       {isCartOpen && (
         <CartModal 
