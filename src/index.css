@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #fdfcf8;
+  --color-text: #1a1a1a;
+  --color-accent: #4a3728; /* Jute brown */
+  --color-gold: #d4af37;
+  --color-green: #006847;
+  --color-red: #ce1126;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-sans);
+  transition: var(--transition);
+}
+
+/* Premium Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.premium-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.text-reveal {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section transitions */
+section {
+  padding: 8rem 0;
+}
+
+/* Animations base */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in {
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Rediseño robusto del Catálogo */
+.premium-filter-container {
+  display: flex !important;
+  gap: 1.5rem !important;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(74, 55, 40, 0.1);
+  padding-bottom: 0.75rem;
+}
+
+.premium-grid {
+  display: grid !important;
+  gap: 3rem 2rem !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+@media (min-width: 1024px) {
+  .premium-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+.filter-btn {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(74, 55, 40, 0.4);
+  position: relative;
+  padding: 0.5rem 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  color: var(--color-accent);
+}
+
+.filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gold);
+}
+
+/* Gold Shimmer Effect */
+.shimmer-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-gold::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(212, 175, 55, 0.1) 48%,
+    rgba(212, 175, 55, 0.4) 50%,
+    rgba(212, 175, 55, 0.1) 52%,
+    transparent 55%
+  );
+  transform: rotate(25deg);
+  animation: shimmer 6s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  20%, 100% { transform: translateX(100%) rotate(25deg); }
+}
+
+/* Weaving Text Base */
+.char-step {
+  display: inline-block;
+  opacity: 0;
+}
+
+.premium-gradient-text {
+  background: linear-gradient(to right, #1a1a1a 0%, #4a3728 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Golden Logo Writing Effects (Editorial Style) */
+.logo-stroke {
+  -webkit-text-stroke: 0.5px var(--color-gold);
+  color: transparent;
+  paint-order: stroke fill;
+  overflow: visible !important;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.logo-write-on {
+  /* clip-path inicial manejado por JS para evitar invisibilidad en caso de error de script */
+  background: var(--color-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: visible !important;
+  padding: 0 0.5em; /* Espacio para remates caligráficos */
+  margin: 0 -0.5em; /* Centrado compensatorio */
+}
+
+.logo-container-fix {
+  padding: 0 5rem; /* Margen de maniobra generoso */
+  margin: 0 -0.2rem;
+  overflow: visible !important;
+}
+
+.letter-container {
+  overflow: visible !important;
+  display: inline-block;
+  position: relative;
+  padding-left: 0.1em; /* Sidebearing safety global */
+}
+
+.logo-glow-soft {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+
+
+
+

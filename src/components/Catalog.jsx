@@ -1,0 +1,95 @@
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+import { products } from '../data/products';
+import ProductCard from './ProductCard';
+
+const CATEGORIES = ["Todos", "Bandoleras", "Bolsas", "Mochilas", "Portacelulares", "Esenciales"];
+
+function Catalog({ onAddToCart }) {
+  const [activeCategory, setActiveCategory] = useState("Todos");
+
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    // Animación de entrada de la sección
+    gsap.to(sectionRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 85%',
+      }
+    });
+
+    // Staggered reveal for cards
+    const cards = sectionRef.current.querySelectorAll('.product-card');
+    gsap.fromTo(cards, 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8, 
+        stagger: 0.1, 
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.premium-grid',
+          start: 'top 80%',
+        }
+      }
+    );
+  }, [activeCategory]); // Re-run when category changes to animate new items
+
+  const filteredProducts = activeCategory === "Todos" 
+    ? products 
+    : products.filter(p => p.category === activeCategory);
+
+  return (
+    <section id="catalog" className="pt-0 pb-24 bg-transparent opacity-0 translate-y-10" ref={sectionRef}>
+      <div className="container">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="max-w-md">
+            <h2 className="text-5xl mb-4">Nuestra Selección</h2>
+            <p className="text-sm font-light text-accent/60 italic">
+               Cada pieza cuenta una historia de manos mexicanas dedicadas a la maestría artesanal del yute.
+            </p>
+          </div>
+          
+          <div className="premium-filter-container no-scrollbar">
+            {CATEGORIES.map(cat => (
+              <button 
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="premium-grid">
+          {filteredProducts.slice(0, 32).map(product => (
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              onAdd={onAddToCart} 
+            />
+          ))}
+        </div>
+        
+        {filteredProducts.length === 0 && (
+           <div className="text-center py-20 opacity-30 italic">
+              Sin productos por el momento en esta categoría.
+           </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+export default Catalog;
