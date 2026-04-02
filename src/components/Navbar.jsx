@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Instagram, Facebook } from 'lucide-react';
+import { ShoppingBag, Menu, X, Instagram, Facebook, User } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
 function Navbar({ cartCount, openCart }) {
@@ -40,6 +40,11 @@ function Navbar({ cartCount, openCart }) {
           <div className="hidden lg:flex gap-8">
             <Instagram size={20} className="opacity-20 hover:opacity-100 cursor-pointer transition-all hover:scale-125" />
           </div>
+          
+          <a href="/admin" className="hover:scale-110 transition-all active:scale-90" aria-label="Panel de Administración" title="Panel de Administración">
+            <User size={30} strokeWidth={1} />
+          </a>
+
           <button onClick={openCart} className="flex items-center gap-2 relative hover:scale-110 transition-all active:scale-90 group" aria-label="Abrir Carrito">
             <ShoppingBag size={32} strokeWidth={1} />
             {cartCount > 0 && (

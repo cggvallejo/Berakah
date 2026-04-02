@@ -31,12 +31,91 @@ function useAdminProducts() {
     save(products.map(p => (p.id === id ? { ...p, ...changes } : p)));
   };
 
+  const addProduct = (newProduct) => {
+    save([{ ...newProduct, id: String(Date.now()) }, ...products]);
+  };
+
   const resetAll = () => {
     localStorage.removeItem(STORAGE_KEY);
     setProducts([...defaultProducts]);
   };
 
-  return { products, updateProduct, resetAll };
+  return { products, updateProduct, addProduct, resetAll, setProducts };
+}
+
+// ─── Lógica de Sincronización GitHub ──────────────────────────────────────────
+const GITHUB_REPO = 'cggvallejo/Berakah';
+const FILE_PATH = 'src/data/products.js';
+
+async function syncWithGithub(token, updatedProducts) {
+  if (!token) throw new Error('No hay token configurado');
+  
+  const headers = {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+  };
+
+  // 1. Obtener el archivo actual (para sacar el SHA necesario para actualizar)
+  const getRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}`, { headers });
+  if (!getRes.ok) throw new Error('Error al obtener el archivo del repositorio');
+  const fileData = await getRes.json();
+  const sha = fileData.sha;
+
+  // 2. Preparar el nuevo contenido
+  const jsContent = `export const products = ${JSON.stringify(updatedProducts, null, 2)};\n`;
+  // Codificar en Base64 asegurando que no se rompa con acentos (UTF-8)
+  const base64Content = btoa(unescape(encodeURIComponent(jsContent)));
+
+  // 3. Hacer el commit
+  const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}`, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify({
+      message: 'Actualización del catálogo de productos desde el Panel web',
+      content: base64Content,
+      sha: sha
+    })
+  });
+
+  if (!putRes.ok) {
+    const errorData = await putRes.json();
+    throw new Error(errorData.message || 'Error al hacer el commit en GitHub');
+  }
+}
+
+// ─── Modal de Configuración GitHub ───────────────────────────────────────────
+function ConfigModal({ token, onSave, onClose }) {
+  const [val, setVal] = useState(token || '');
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      onClick={e => e.target === e.currentTarget && onClose()}>
+      <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl">
+        <h3 className="font-bold text-gray-900 text-lg mb-2">Configuración Git</h3>
+        <p className="text-gray-500 text-xs mb-4">Ingresa tu GitHub Personal Access Token para sincronizar cambios y automatizar despiliegues en Render mediante commits directos.</p>
+        
+        <input 
+          type="password"
+          value={val}
+          onChange={e => setVal(e.target.value)}
+          placeholder="ghp_xxxxxxxxxxxx"
+          className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 text-sm mb-4"
+        />
+
+        <div className="flex gap-3">
+          <button onClick={onClose}
+            className="flex-1 border border-gray-200 text-gray-600 py-2.5 rounded-xl text-sm font-semibold hover:bg-gray-50">
+            Cancelar
+          </button>
+          <button onClick={() => onSave(val)}
+            className="flex-1 bg-amber-500 text-black py-2.5 rounded-xl text-sm font-bold hover:bg-amber-400">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 // ─── Componente Login ────────────────────────────────────────────────────────
@@ -117,7 +196,7 @@ function LoginScreen({ onLogin }) {
 }
 
 // ─── Modal de edición de producto ────────────────────────────────────────────
-function EditModal({ product, onSave, onClose }) {
+function EditModal({ product, onSave, onClose, isSyncing }) {
   const [form, setForm] = useState({
     name: product.name,
     price: product.price,
@@ -127,7 +206,6 @@ function EditModal({ product, onSave, onClose }) {
   });
   const [imgPreview, setImgPreview] = useState(product.image);
   const [imgLoading, setImgLoading] = useState(false);
-  const [saved, setSaved] = useState(false);
   const fileRef = useRef();
 
   const handleImageUpload = (e) => {
@@ -146,14 +224,12 @@ function EditModal({ product, onSave, onClose }) {
 
   const handleSave = () => {
     onSave(product.id, { ...form, price: Number(form.price) });
-    setSaved(true);
-    setTimeout(() => { setSaved(false); onClose(); }, 900);
   };
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)' }}
-      onClick={(e) => e.target === e.currentTarget && onClose()}>
+      onClick={(e) => !isSyncing && e.target === e.currentTarget && onClose()}>
       
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto"
         style={{ scrollbarWidth: 'thin' }}>
@@ -161,8 +237,8 @@ function EditModal({ product, onSave, onClose }) {
         {/* Header */}
         <div className="sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex items-center justify-between px-8 py-5 border-b border-gray-100 rounded-t-3xl">
           <div>
-            <p className="text-xs uppercase tracking-widest text-amber-600 font-semibold">Editar Producto</p>
-            <h2 className="font-serif text-gray-900 text-lg leading-tight mt-0.5 line-clamp-1">{product.name}</h2>
+            <p className="text-xs uppercase tracking-widest text-amber-600 font-semibold">{product.id ? 'Editar Producto' : 'Nuevo Producto'}</p>
+            <h2 className="font-serif text-gray-900 text-lg leading-tight mt-0.5 line-clamp-1">{form.name || 'Nuevo'}</h2>
           </div>
           <button onClick={onClose}
             className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-all text-lg leading-none">
@@ -261,17 +337,22 @@ function EditModal({ product, onSave, onClose }) {
 
           {/* Botones */}
           <div className="flex gap-3 pt-2">
-            <button onClick={onClose}
-              className="flex-1 border border-gray-200 text-gray-600 py-3.5 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-all">
+            <button onClick={onClose} disabled={isSyncing}
+              className="flex-1 border border-gray-200 text-gray-600 py-3.5 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-all disabled:opacity-50">
               Cancelar
             </button>
-            <button onClick={handleSave}
-              className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all ${
-                saved
-                  ? 'bg-green-500 text-white'
+            <button onClick={handleSave} disabled={isSyncing}
+              className={`flex-1 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 ${
+                isSyncing
+                  ? 'bg-amber-300 text-black/50 cursor-not-allowed'
                   : 'bg-amber-500 hover:bg-amber-400 text-black'
               }`}>
-              {saved ? '✓ Guardado' : 'Guardar cambios'}
+              {isSyncing ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-black/50 border-t-transparent rounded-full animate-spin" />
+                  Sincronizando...
+                </>
+              ) : 'Guardar y Sincronizar'}
             </button>
           </div>
         </div>
@@ -295,10 +376,10 @@ function AdminProductCard({ product, onEdit }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all" />
         <button
           onClick={() => onEdit(product)}
-          className="absolute bottom-3 left-1/2 -translate-x-1/2 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white text-gray-900 text-xs font-bold px-5 py-2 rounded-full shadow-lg whitespace-nowrap flex items-center gap-2"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gray-900 text-white text-sm font-black px-6 py-2.5 rounded-full shadow-2xl whitespace-nowrap flex items-center gap-2 border border-gray-700"
         >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
           </svg>
           Editar
         </button>
@@ -316,21 +397,68 @@ function AdminProductCard({ product, onEdit }) {
 
 // ─── Panel Principal ──────────────────────────────────────────────────────────
 function AdminDashboard({ onLogout }) {
-  const { products, updateProduct, resetAll } = useAdminProducts();
+  const { products, updateProduct, addProduct, resetAll } = useAdminProducts();
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
-  const [toastMsg, setToastMsg] = useState('');
+  const [toastMsg, setToastMsg] = useState({ text: '', type: 'success' });
+  const [isSyncing, setIsSyncing] = useState(false);
+  
+  const [githubToken, setGithubToken] = useState(() => localStorage.getItem('berakah_gh_token') || '');
+  const [showConfig, setShowConfig] = useState(false);
 
-  const showToast = (msg) => {
-    setToastMsg(msg);
-    setTimeout(() => setToastMsg(''), 3000);
+  const showToast = (text, type = 'success') => {
+    setToastMsg({ text, type });
+    setTimeout(() => setToastMsg({ text: '', type: 'success' }), 4000);
   };
 
-  const handleSave = (id, changes) => {
-    updateProduct(id, changes);
-    showToast('✓ Producto actualizado correctamente');
+  const handleSaveConfig = (token) => {
+    setGithubToken(token);
+    localStorage.setItem('berakah_gh_token', token);
+    setShowConfig(false);
+    showToast('⚙️ Token configurado', 'success');
+  };
+
+  const handleSaveProduct = async (id, changes) => {
+    if (!githubToken) {
+      showToast('No hay Token configurado. Guarda solo local.', 'error');
+      setShowConfig(true);
+      return;
+    }
+
+    setIsSyncing(true);
+    try {
+      let updatedList;
+      if (id) {
+        updatedList = products.map(p => (p.id === id ? { ...p, ...changes } : p));
+        updateProduct(id, changes);
+      } else {
+        const newProd = { ...changes, id: String(Date.now()) };
+        updatedList = [newProd, ...products];
+        addProduct(newProd);
+      }
+
+      await syncWithGithub(githubToken, updatedList);
+      showToast('Sincronizado a GitHub (Render actualizando)', 'success');
+      setEditingProduct(null);
+    } catch (err) {
+      console.error(err);
+      showToast(`Error de GitHub: ${err.message}`, 'error');
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
+  const handleAddProduct = () => {
+    setEditingProduct({
+      id: '',
+      name: '',
+      price: '',
+      category: CATEGORIES[0],
+      description: '',
+      image: ''
+    });
   };
 
   const handleReset = () => {
@@ -360,10 +488,10 @@ function AdminDashboard({ onLogout }) {
   return (
     <div className="min-h-screen" style={{ background: '#f8f6f2', fontFamily: 'Inter, sans-serif' }}>
       {/* Toast */}
-      {toastMsg && (
-        <div className="fixed top-6 right-6 z-[9999] bg-gray-900 text-white text-sm font-medium px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 animate-pulse">
-          <span className="text-green-400 text-base">✓</span>
-          {toastMsg}
+      {toastMsg.text && (
+        <div className={`fixed top-6 right-6 z-[9999] text-white text-sm font-medium px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 animate-pulse ${toastMsg.type === 'error' ? 'bg-red-500' : 'bg-gray-900'}`}>
+          <span className="text-xl leading-none">{toastMsg.type === 'error' ? '⚠️' : '✓'}</span>
+          {toastMsg.text}
         </div>
       )}
 
@@ -387,6 +515,21 @@ function AdminDashboard({ onLogout }) {
               </svg>
               Ver tienda
             </a>
+            <button onClick={() => setShowConfig(true)}
+              className="flex items-center gap-2 text-xs text-blue-600 bg-blue-50 border border-blue-100 hover:bg-blue-100 px-3 py-2 rounded-xl transition-all font-semibold">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              GitHub Git
+            </button>
+            <button onClick={handleAddProduct}
+              className="flex items-center gap-2 text-xs text-black bg-amber-500 hover:bg-amber-400 px-3 py-2 rounded-xl transition-all font-bold uppercase tracking-wide">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
+              </svg>
+              Nuevo
+            </button>
             <button onClick={() => setShowResetConfirm(true)}
               className="hidden sm:flex items-center gap-2 text-xs text-red-500 hover:text-red-700 border border-red-100 hover:border-red-200 bg-red-50 hover:bg-red-100 px-3 py-2 rounded-xl transition-all">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -490,8 +633,18 @@ function AdminDashboard({ onLogout }) {
       {editingProduct && (
         <EditModal
           product={editingProduct}
-          onSave={handleSave}
+          onSave={handleSaveProduct}
           onClose={() => setEditingProduct(null)}
+          isSyncing={isSyncing}
+        />
+      )}
+
+      {/* Modal Configuración */}
+      {showConfig && (
+        <ConfigModal 
+          token={githubToken} 
+          onSave={handleSaveConfig} 
+          onClose={() => setShowConfig(false)} 
         />
       )}
 
