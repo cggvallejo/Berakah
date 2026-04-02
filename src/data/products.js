@@ -4,7 +4,7 @@ export const products = [
     "name": "Bolsa bandolera con cierre, forrada y cinta ajustable",
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_06af4328.jpg",
-    "price": 649,
+    "price": 500,
     "description": "Una pieza maestra de trenzado a mano con superficie con carácter. Este diseño de bandoleras cuenta con detalles en cuero sintético, capturando la botín de artesanía fina."
   },
   {
