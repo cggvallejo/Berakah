@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { products as defaultProducts } from '../data/products';
+import { settings as defaultSettings } from '../data/settings';
 
 // ─── Credenciales ────────────────────────────────────────────────────────────
 const ADMIN_USER = 'berakah';
 const ADMIN_PASS = 'berakah1';
 const STORAGE_KEY = 'berakah_products_override';
+const SETTINGS_STORAGE_KEY = 'berakah_settings_override';
 
 // ─── Categorías disponibles ──────────────────────────────────────────────────
 const CATEGORIES = ['Bandoleras', 'Bolsas', 'Mochilas', 'Portacelulares', 'Esenciales'];
@@ -43,11 +45,38 @@ function useAdminProducts() {
   return { products, updateProduct, addProduct, resetAll, setProducts };
 }
 
+// ─── Hook: configuración con persistencia ───────────────────────────────────
+function useAdminSettings() {
+  const loadSettings = () => {
+    try {
+      const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
+      return stored ? JSON.parse(stored) : { ...defaultSettings };
+    } catch {
+      return { ...defaultSettings };
+    }
+  };
+
+  const [settings, setSettings] = useState(loadSettings);
+
+  const save = (updated) => {
+    setSettings(updated);
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(updated));
+  };
+
+  const resetSettings = () => {
+    localStorage.removeItem(SETTINGS_STORAGE_KEY);
+    setSettings({ ...defaultSettings });
+  };
+
+  return { settings, save, resetSettings };
+}
+
 // ─── Lógica de Sincronización GitHub ──────────────────────────────────────────
 const GITHUB_REPO = 'cggvallejo/Berakah';
-const FILE_PATH = 'src/data/products.js';
+const PRODUCTS_PATH = 'src/data/products.js';
+const SETTINGS_PATH = 'src/data/settings.js';
 
-async function syncWithGithub(token, updatedProducts) {
+async function syncWithGithub(token, filePath, content, onProgress) {
   if (!token) throw new Error('No hay token configurado');
   
   const headers = {
@@ -56,19 +85,22 @@ async function syncWithGithub(token, updatedProducts) {
     'Content-Type': 'application/json',
   };
 
+  if (onProgress) onProgress('Preparando sincronización...', 10);
+  
   // 1. Obtener el archivo actual (para sacar el SHA necesario para actualizar)
-  const getRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}`, { headers });
+  if (onProgress) onProgress('Conectando con GitHub...', 30);
+  const getRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, { headers });
   if (!getRes.ok) throw new Error('Error al obtener el archivo del repositorio');
   const fileData = await getRes.json();
   const sha = fileData.sha;
 
-  // 2. Preparar el nuevo contenido
-  const jsContent = `export const products = ${JSON.stringify(updatedProducts, null, 2)};\n`;
+  if (onProgress) onProgress('Procesando nuevos cambios...', 50);
   // Codificar en Base64 asegurando que no se rompa con acentos (UTF-8)
-  const base64Content = btoa(unescape(encodeURIComponent(jsContent)));
+  const base64Content = btoa(unescape(encodeURIComponent(content)));
 
+  if (onProgress) onProgress('Subiendo commit al repositorio...', 80);
   // 3. Hacer el commit
-  const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}`, {
+  const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify({
@@ -82,6 +114,8 @@ async function syncWithGithub(token, updatedProducts) {
     const errorData = await putRes.json();
     throw new Error(errorData.message || 'Error al hacer el commit en GitHub');
   }
+
+  if (onProgress) onProgress('¡Sincronización Exitosa!', 100);
 }
 
 // ─── Modal de Configuración GitHub ───────────────────────────────────────────
@@ -395,15 +429,134 @@ function AdminProductCard({ product, onEdit }) {
   );
 }
 
+// ─── Componente Edición de Ajustes ──────────────────────────────────────────
+function SettingsEditor({ settings, onSave, isSyncing }) {
+  const [form, setForm] = useState({ ...settings });
+
+  const handlePhoneChange = (index, field, value) => {
+    const newPhones = [...form.phones];
+    newPhones[index] = { ...newPhones[index], [field]: value };
+    if (field === 'number') {
+      newPhones[index].link = `https://wa.me/52${value.replace(/\s+/g, '')}`;
+    }
+    setForm({ ...form, phones: newPhones });
+  };
+
+  const handleLocationChange = (index, field, value) => {
+    const newLocs = [...form.locations];
+    newLocs[index] = { ...newLocs[index], [field]: value };
+    setForm({ ...form, locations: newLocs });
+  };
+
+  return (
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm">
+        <h3 className="text-xl font-serif text-gray-900 mb-6">Números de Contacto (WhatsApp)</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {form.phones.map((phone, i) => (
+            <div key={i} className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
+              <label className="block text-[10px] uppercase tracking-widest font-bold text-amber-600 mb-4">Teléfono {i + 1}</label>
+              <div className="space-y-4">
+                <input 
+                  type="text" 
+                  value={phone.label} 
+                  onChange={e => handlePhoneChange(i, 'label', e.target.value)}
+                  placeholder="Etiqueta (ej. Ventas 1)"
+                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-400"
+                />
+                <input 
+                  type="text" 
+                  value={phone.number} 
+                  onChange={e => handlePhoneChange(i, 'number', e.target.value)}
+                  placeholder="Número (ej. 5573945771)"
+                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-400"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm">
+        <h3 className="text-xl font-serif text-gray-900 mb-6">Ubicaciones y Sucursales</h3>
+        <div className="space-y-8">
+          {form.locations.map((loc, i) => (
+            <div key={i} className="p-8 bg-gray-50 rounded-[24px] border border-gray-100 border-l-4 border-l-amber-400">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <label className="block text-[10px] uppercase tracking-widest font-bold text-amber-600 mb-2">Información {loc.name}</label>
+                  <input 
+                    type="text" 
+                    value={loc.name} 
+                    onChange={e => handleLocationChange(i, 'name', e.target.value)}
+                    placeholder="Nombre de la sucursal"
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-400"
+                  />
+                  <input 
+                    type="text" 
+                    value={loc.address} 
+                    onChange={e => handleLocationChange(i, 'address', e.target.value)}
+                    placeholder="Dirección completa"
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-400"
+                  />
+                  <input 
+                    type="text" 
+                    value={loc.schedule} 
+                    onChange={e => handleLocationChange(i, 'schedule', e.target.value)}
+                    placeholder="Horario (ej. Lunes a Sábado: 9-6)"
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-400"
+                  />
+                </div>
+                <div className="space-y-4">
+                   <label className="block text-[10px] uppercase tracking-widest font-bold text-amber-600 mb-2">Embed de Google Maps (Iframe Source)</label>
+                   <textarea 
+                    value={loc.mapIframe} 
+                    onChange={e => handleLocationChange(i, 'mapIframe', e.target.value)}
+                    placeholder="https://www.google.com/maps/embed?pb=..."
+                    rows={4}
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-amber-400 resize-none"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-end">
+        <button 
+          onClick={() => onSave(form)}
+          disabled={isSyncing}
+          className={`px-10 py-4 rounded-2xl font-bold text-sm transition-all flex items-center justify-center gap-3 shadow-xl ${
+            isSyncing
+              ? 'bg-amber-300 text-black/50 cursor-not-allowed'
+              : 'bg-amber-500 hover:bg-amber-400 text-black active:scale-95 shadow-amber-200'
+          }`}
+        >
+          {isSyncing ? (
+            <>
+              <div className="w-5 h-5 border-2 border-black/50 border-t-transparent rounded-full animate-spin" />
+              Sincronizando Ajustes...
+            </>
+          ) : 'Guardar Cambios Generales'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ─── Panel Principal ──────────────────────────────────────────────────────────
 function AdminDashboard({ onLogout }) {
   const { products, updateProduct, addProduct, resetAll } = useAdminProducts();
+  const { settings, save: saveSettingsLocal, resetSettings } = useAdminSettings();
+  
+  const [activeTab, setActiveTab] = useState('catalogo'); // 'catalogo' | 'ajustes'
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [toastMsg, setToastMsg] = useState({ text: '', type: 'success' });
-  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncStatus, setSyncStatus] = useState(null); // null o objeto con { message, percent }
   
   const [githubToken, setGithubToken] = useState(() => localStorage.getItem('berakah_gh_token') || '');
   const [showConfig, setShowConfig] = useState(false);
@@ -427,7 +580,7 @@ function AdminDashboard({ onLogout }) {
       return;
     }
 
-    setIsSyncing(true);
+    setSyncStatus({ message: 'Iniciando...', percent: 5 });
     try {
       let updatedList;
       if (id) {
@@ -438,15 +591,41 @@ function AdminDashboard({ onLogout }) {
         updatedList = [newProd, ...products];
         addProduct(newProd);
       }
-
-      await syncWithGithub(githubToken, updatedList);
-      showToast('Sincronizado a GitHub (Render actualizando)', 'success');
+      
+      const jsContent = `export const products = ${JSON.stringify(updatedList, null, 2)};\n`;
+      await syncWithGithub(githubToken, PRODUCTS_PATH, jsContent, (msg, pct) => {
+        setSyncStatus({ message: msg, percent: pct });
+      });
+      // Dejar la barra mostrándose un rato más con el mensaje de éxito
       setEditingProduct(null);
+      setTimeout(() => setSyncStatus(null), 5000);
     } catch (err) {
       console.error(err);
       showToast(`Error de GitHub: ${err.message}`, 'error');
-    } finally {
-      setIsSyncing(false);
+      setSyncStatus(null);
+    }
+  };
+
+  const handleSaveSettings = async (newSettings) => {
+    if (!githubToken) {
+      showToast('No hay Token configurado. Guarda solo local.', 'error');
+      setShowConfig(true);
+      return;
+    }
+
+    setSyncStatus({ message: 'Preparando ajustes...', percent: 5 });
+    try {
+      saveSettingsLocal(newSettings);
+      const jsContent = `export const settings = ${JSON.stringify(newSettings, null, 2)};\n`;
+      await syncWithGithub(githubToken, SETTINGS_PATH, jsContent, (msg, pct) => {
+        setSyncStatus({ message: msg, percent: pct });
+      });
+      showToast('Ajustes generales actualizados correctamente');
+      setTimeout(() => setSyncStatus(null), 5000);
+    } catch (err) {
+      console.error(err);
+      showToast(`Error de GitHub: ${err.message}`, 'error');
+      setSyncStatus(null);
     }
   };
 
@@ -498,14 +677,32 @@ function AdminDashboard({ onLogout }) {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: '#2d1a0a' }}>
-              <span className="text-amber-400 font-serif text-lg font-bold">B</span>
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: '#2d1a0a' }}>
+                <span className="text-amber-400 font-serif text-lg font-bold">B</span>
+              </div>
+              <div>
+                <h1 className="font-bold text-gray-900 text-base leading-none">Panel Berakah</h1>
+                <p className="text-xs text-gray-400 mt-0.5">Admin v2.1</p>
+              </div>
             </div>
-            <div>
-              <h1 className="font-bold text-gray-900 text-base leading-none">Panel Berakah</h1>
-              <p className="text-xs text-gray-400 mt-0.5">Administración de catálogo</p>
-            </div>
+
+            {/* Tabs */}
+            <nav className="hidden md:flex items-center gap-1 bg-gray-100 p-1 rounded-2xl border border-gray-200">
+              <button 
+                onClick={() => setActiveTab('catalogo')}
+                className={`px-6 py-2 rounded-xl text-xs font-bold transition-all ${activeTab === 'catalogo' ? 'bg-white text-black shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}
+              >
+                Catálogo
+              </button>
+              <button 
+                onClick={() => setActiveTab('ajustes')}
+                className={`px-6 py-2 rounded-xl text-xs font-bold transition-all ${activeTab === 'ajustes' ? 'bg-white text-black shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}
+              >
+                Ajustes Generales
+              </button>
+            </nav>
           </div>
           <div className="flex items-center gap-3">
             <a href="/" target="_blank" rel="noopener noreferrer"
@@ -564,68 +761,79 @@ function AdminDashboard({ onLogout }) {
           ))}
         </div>
 
-        {/* Filtros y búsqueda */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-6 py-5 mb-6">
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-            {/* Búsqueda */}
-            <div className="relative flex-1 max-w-sm">
-              <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Buscar productos..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 transition-all"
-              />
-              {searchQuery && (
-                <button onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">×</button>
-              )}
+        {/* Contenido según Tab */}
+        {activeTab === 'catalogo' ? (
+          <>
+            {/* Filtros y búsqueda */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-6 py-5 mb-6 animate-in slide-in-from-top-2 duration-300">
+              <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                {/* Búsqueda */}
+                <div className="relative flex-1 max-w-sm">
+                  <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Buscar productos..."
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 transition-all"
+                  />
+                  {searchQuery && (
+                    <button onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">×</button>
+                  )}
+                </div>
+
+                {/* Filtro categoría */}
+                <div className="flex flex-wrap gap-2">
+                  {['Todos', ...CATEGORIES].map(cat => (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveCategory(cat)}
+                      className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all border ${
+                        activeCategory === cat
+                          ? 'bg-amber-500 text-black border-amber-500 shadow-sm'
+                          : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      {cat} {cat !== 'Todos' && categoryCount[cat] ? `(${categoryCount[cat]})` : ''}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-400 mt-3">
+                Mostrando <strong className="text-gray-600">{filteredProducts.length}</strong> productos
+              </p>
             </div>
 
-            {/* Filtro categoría */}
-            <div className="flex flex-wrap gap-2">
-              {['Todos', ...CATEGORIES].map(cat => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all border ${
-                    activeCategory === cat
-                      ? 'bg-amber-500 text-black border-amber-500 shadow-sm'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  {cat} {cat !== 'Todos' && categoryCount[cat] ? `(${categoryCount[cat]})` : ''}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <p className="text-xs text-gray-400 mt-3">
-            Mostrando <strong className="text-gray-600">{filteredProducts.length}</strong> productos
-          </p>
-        </div>
-
-        {/* Grid de productos */}
-        {filteredProducts.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
-            <p className="text-4xl mb-3">🔍</p>
-            <p className="text-gray-500 font-medium">Sin resultados para "{searchQuery}"</p>
-            <button onClick={() => { setSearchQuery(''); setActiveCategory('Todos'); }}
-              className="mt-4 text-amber-600 text-sm underline">Limpiar filtros</button>
-          </div>
+            {/* Grid de productos */}
+            {filteredProducts.length === 0 ? (
+              <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
+                <p className="text-4xl mb-3">🔍</p>
+                <p className="text-gray-500 font-medium">Sin resultados para "{searchQuery}"</p>
+                <button onClick={() => { setSearchQuery(''); setActiveCategory('Todos'); }}
+                  className="mt-4 text-amber-600 text-sm underline">Limpiar filtros</button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 animate-in fade-in duration-700">
+                {filteredProducts.map(product => (
+                  <AdminProductCard
+                    key={product.id}
+                    product={product}
+                    onEdit={setEditingProduct}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {filteredProducts.map(product => (
-              <AdminProductCard
-                key={product.id}
-                product={product}
-                onEdit={setEditingProduct}
-              />
-            ))}
-          </div>
+          <SettingsEditor 
+            settings={settings} 
+            onSave={handleSaveSettings} 
+            isSyncing={!!syncStatus} 
+          />
         )}
       </main>
 
@@ -635,8 +843,47 @@ function AdminDashboard({ onLogout }) {
           product={editingProduct}
           onSave={handleSaveProduct}
           onClose={() => setEditingProduct(null)}
-          isSyncing={isSyncing}
+          isSyncing={!!syncStatus}
         />
+      )}
+
+      {/* Barra de estado de Git Sincronización */}
+      {syncStatus && (
+        <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-gray-900 border-t border-gray-800 shadow-2xl">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 w-full sm:w-auto">
+              <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700 shadow-inner">
+                {syncStatus.percent === 100 ? (
+                  <span className="text-green-400 text-lg leading-none">✓</span>
+                ) : (
+                  <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+                )}
+              </div>
+              <div>
+                <p className="text-white text-sm font-semibold">{syncStatus.message}</p>
+                <p className="text-gray-400 text-xs mt-0.5">
+                  {syncStatus.percent === 100 
+                    ? 'Proceso finalizado. Render está compilando tu nuevo sitio.'
+                    : 'Actualizando código en línea con la API de GitHub'
+                  }
+                </p>
+              </div>
+            </div>
+            
+            <div className="w-full sm:w-64 max-w-full">
+              <div className="flex justify-between text-xs font-semibold mb-1.5">
+                <span className="text-gray-400">Progreso</span>
+                <span className={syncStatus.percent === 100 ? 'text-green-400' : 'text-amber-400'}>{syncStatus.percent}%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
+                <div 
+                  className={`h-full rounded-full transition-all duration-500 ease-out ${syncStatus.percent === 100 ? 'bg-green-500' : 'bg-amber-500'}`}
+                  style={{ width: `${syncStatus.percent}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Modal Configuración */}

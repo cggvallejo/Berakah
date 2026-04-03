@@ -47,7 +47,7 @@ function ProductCard({ product, onAdd }) {
             {product.name}
           </h3>
           <span className="product-price text-xs md:text-sm font-sans font-medium text-accent/90 whitespace-nowrap">
-            ${product.price.toLocaleString()}
+            {product.price > 0 ? `$${product.price.toLocaleString()}` : 'Consultar'}
           </span>
         </div>
         <p className="product-desc text-[9px] md:text-[10px] text-accent/60 font-light italic truncate hidden sm:block">

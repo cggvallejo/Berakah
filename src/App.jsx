@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Locations from './components/Locations';
 import Catalog from './components/Catalog';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
@@ -42,6 +43,7 @@ function App() {
       
       <main>
         <Hero />
+        <Locations />
         <Catalog onAddToCart={addToCart} />
       </main>
 

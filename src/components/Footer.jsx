@@ -1,6 +1,8 @@
 import React from 'react';
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 
+import { settings } from '../data/settings';
+
 function Footer() {
   return (
     <footer className="bg-accent text-white py-24">
@@ -19,9 +21,11 @@ function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-[0.3em] font-bold mb-8 text-gold">Contacto</h4>
           <ul className="flex flex-col gap-4 text-sm text-white/80 font-light">
-            <li className="flex items-center gap-3"><Phone size={14} /> +52 (55) 1234 5678</li>
+            {settings.phones.map((phone, i) => (
+              <li key={i} className="flex items-center gap-3"><Phone size={14} /> {phone.number}</li>
+            ))}
             <li className="flex items-center gap-3"><Mail size={14} /> hola@berakah.mx</li>
-            <li className="flex items-center gap-3"><MapPin size={14} /> Ciudad de México, MX</li>
+            <li className="flex items-center gap-3"><MapPin size={14} /> {settings.locations[0].address.split(',')[0]}</li>
           </ul>
         </div>
 
