@@ -12,6 +12,9 @@ const WeaveBackground = () => {
     let animationFrameId;
     let width, height;
 
+    // Caches for the static parts of the sine and cosine waves
+    let sinCache, cosCache;
+
     class Thread {
       constructor(index, isVertical) {
         this.index = index;
@@ -37,11 +40,17 @@ const WeaveBackground = () => {
         
         let x, y;
 
+        const B = time * 0.001 * this.speed + this.phase;
+        const sinB = Math.sin(B);
+        const cosB = Math.cos(B);
+
         if (this.isVertical) {
           x = this.index * spacing;
           ctx.moveTo(x, 0);
-          for (let i = 0; i <= height; i += 15) {
-            const wave = Math.sin(i * 0.005 + time * 0.001 * this.speed + this.phase) * 20;
+          let k = 0;
+          for (let i = 0; i <= height; i += 15, k++) {
+            // Math.sin(A + B) = Math.sin(A)*Math.cos(B) + Math.cos(A)*Math.sin(B)
+            const wave = (sinCache[k] * cosB + cosCache[k] * sinB) * 20;
             
             // Mouse Interaction distance
             const dx = x + wave - mouseRef.current.x;
@@ -54,8 +63,10 @@ const WeaveBackground = () => {
         } else {
           y = this.index * spacing;
           ctx.moveTo(0, y);
-          for (let i = 0; i <= width; i += 15) {
-            const wave = Math.cos(i * 0.005 + time * 0.001 * this.speed + this.phase) * 20;
+          let k = 0;
+          for (let i = 0; i <= width; i += 15, k++) {
+            // Math.cos(A + B) = Math.cos(A)*Math.cos(B) - Math.sin(A)*Math.sin(B)
+            const wave = (cosCache[k] * cosB - sinCache[k] * sinB) * 20;
             
             // Mouse Interaction distance
             const dx = i - mouseRef.current.x;
@@ -82,6 +93,17 @@ const WeaveBackground = () => {
 
       for (let i = 0; i < verticalCount; i++) threads.push(new Thread(i, true));
       for (let i = 0; i < horizontalCount; i++) threads.push(new Thread(i, false));
+
+      const maxSize = Math.max(width, height);
+      const maxIndex = Math.ceil(maxSize / 15);
+      sinCache = new Float32Array(maxIndex + 1);
+      cosCache = new Float32Array(maxIndex + 1);
+
+      for (let k = 0; k <= maxIndex; k++) {
+        const i = k * 15;
+        sinCache[k] = Math.sin(i * 0.005);
+        cosCache[k] = Math.cos(i * 0.005);
+      }
     };
 
     const render = (time) => {
