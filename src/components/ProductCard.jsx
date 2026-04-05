@@ -3,7 +3,7 @@ import { ShoppingBag, Eye } from 'lucide-react';
 
 function ProductCard({ product, onAdd }) {
   return (
-    <div className="group relative flex flex-col bg-white overflow-hidden transition-all duration-700">
+    <div className="group relative flex flex-col bg-transparent overflow-hidden transition-all duration-700">
       {/* Imagen */}
       <div className="relative aspect-[4/5] bg-bg overflow-hidden premium-shadow rounded-[24px] md:rounded-[32px] transition-all duration-700 group-hover:shadow-2xl">
         <img

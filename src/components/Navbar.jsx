@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Menu, X, Instagram, Facebook, User } from 'lucide-react';
 import BrandLogo from './BrandLogo';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 function Navbar({ cartCount, openCart }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleSmoothScroll = (e, target) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    gsap.to(window, { duration: 1, scrollTo: target, ease: "power3.inOut" });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,41 +25,41 @@ function Navbar({ cartCount, openCart }) {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'glass py-6 premium-shadow' : 'bg-transparent py-10 md:py-14'}`}>
-      <div className="w-full px-8 md:px-16 flex justify-between items-center transition-all duration-500">
+    <nav className={`fixed w-full z-50 transition-all duration-700 ${isScrolled ? 'glass py-6 premium-shadow' : 'bg-transparent py-10 md:py-14'}`}>
+      <div className="w-full px-8 md:px-16 flex justify-between items-center transition-all duration-700">
         <div className="flex gap-10 items-center">
           <button 
             onClick={() => setIsMobileMenuOpen(true)} 
-            className="hover:opacity-60 transition-all hover:scale-110 active:scale-95 group"
+            className="hover:opacity-60 transition-all duration-500 hover:scale-110 active:scale-95 group"
             aria-label="Cerrar Menú"
           >
-            <Menu size={32} strokeWidth={1} className="group-hover:rotate-90 transition-transform duration-500" />
+            <Menu size={32} strokeWidth={1} className="group-hover:rotate-90 transition-transform duration-700" />
           </button>
           
           <div className="hidden lg:flex gap-12 text-[13px] uppercase tracking-[0.4em] font-bold opacity-60">
-            <a href="#catalog" className="hover:text-gold hover:opacity-100 transition-all">Colecciones</a>
-            <a href="#ubicaciones" className="hover:text-gold hover:opacity-100 transition-all">Ubicaciones</a>
-            <a href="#process" className="hover:text-gold hover:opacity-100 transition-all">Artesanía</a>
+            <a href="#catalog" onClick={(e) => handleSmoothScroll(e, "#catalog")} className="hover:text-gold hover:opacity-100 transition-all duration-500 cursor-pointer">Colecciones</a>
+            <a href="#ubicaciones" onClick={(e) => handleSmoothScroll(e, "#ubicaciones")} className="hover:text-gold hover:opacity-100 transition-all duration-500 cursor-pointer">Ubicaciones</a>
+            <a href="#process" onClick={(e) => handleSmoothScroll(e, "#process")} className="hover:text-gold hover:opacity-100 transition-all duration-500 cursor-pointer">Artesanía</a>
           </div>
         </div>
 
-        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${isScrolled ? 'opacity-100 scale-90' : 'opacity-0 scale-50 pointer-events-none'}`}>
+        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-1000 ${isScrolled ? 'opacity-100 scale-90' : 'opacity-0 scale-50 pointer-events-none'}`}>
           <BrandLogo className="text-xl md:text-2xl" />
         </div>
 
         <div className="flex gap-10 items-center">
           <div className="hidden lg:flex gap-8">
-            <Instagram size={20} className="opacity-20 hover:opacity-100 cursor-pointer transition-all hover:scale-125" />
+            <Instagram size={20} className="opacity-20 hover:opacity-100 cursor-pointer transition-all duration-500 hover:scale-125" />
           </div>
           
-          <a href="/admin" className="hover:scale-110 transition-all active:scale-90" aria-label="Panel de Administración" title="Panel de Administración">
+          <a href="/admin" className="hover:scale-110 transition-all duration-500 active:scale-90" aria-label="Panel de Administración" title="Panel de Administración">
             <User size={30} strokeWidth={1} />
           </a>
 
-          <button onClick={openCart} className="flex items-center gap-2 relative hover:scale-110 transition-all active:scale-90 group" aria-label="Abrir Carrito">
+          <button onClick={openCart} className="flex items-center gap-2 relative hover:scale-110 transition-all duration-500 active:scale-90 group" aria-label="Abrir Carrito">
             <ShoppingBag size={32} strokeWidth={1} />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-gold text-white text-[12px] w-5 h-5 rounded-full flex items-center justify-center font-bold premium-shadow border-2 border-white">
+              <span className="absolute -top-1 -right-1 bg-gold text-white text-[12px] w-5 h-5 rounded-full flex items-center justify-center font-bold premium-shadow border-2 border-white transition-transform duration-500">
                 {cartCount}
               </span>
             )}
@@ -76,22 +86,22 @@ function Navbar({ cartCount, openCart }) {
           <div className="flex flex-col gap-10 md:gap-14 text-6xl md:text-8xl font-serif italic tracking-tighter text-text">
             <a 
               href="#catalog" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:pl-8 transition-all duration-500 hover:text-gold"
+              onClick={(e) => handleSmoothScroll(e, "#catalog")}
+              className="hover:pl-8 transition-all duration-500 hover:text-gold cursor-pointer"
             >
               Colecciones
             </a>
             <a 
               href="#ubicaciones" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:pl-8 transition-all duration-500 hover:text-gold"
+              onClick={(e) => handleSmoothScroll(e, "#ubicaciones")}
+              className="hover:pl-8 transition-all duration-500 hover:text-gold cursor-pointer"
             >
               Ubicaciones
             </a>
             <a 
               href="#process" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:pl-8 transition-all duration-500 hover:text-gold"
+              onClick={(e) => handleSmoothScroll(e, "#process")}
+              className="hover:pl-8 transition-all duration-500 hover:text-gold cursor-pointer"
             >
               Artesanía
             </a>

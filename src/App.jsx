@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Locations from './components/Locations';
+import ProcessStrip from './components/ProcessStrip';
 import Catalog from './components/Catalog';
+import Locations from './components/Locations';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
 import CartModal from './components/CartModal';
@@ -43,8 +44,9 @@ function App() {
       
       <main>
         <Hero />
-        <Locations />
+        <ProcessStrip />
         <Catalog onAddToCart={addToCart} />
+        <Locations />
       </main>
 
       <Footer />

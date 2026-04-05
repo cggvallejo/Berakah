@@ -45,19 +45,19 @@ function Catalog({ onAddToCart }) {
       }
     });
 
-    // Staggered reveal for cards
+    // Staggered reveal for cards with more elegant easing and stagger times
     const cards = sectionRef.current.querySelectorAll('.product-card');
     gsap.fromTo(cards, 
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 40 },
       { 
         opacity: 1, 
         y: 0, 
-        duration: 0.8, 
-        stagger: 0.1, 
-        ease: 'power2.out',
+        duration: 1,
+        stagger: 0.15,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: '.premium-grid',
-          start: 'top 80%',
+          start: 'top 85%',
         }
       }
     );
@@ -68,7 +68,7 @@ function Catalog({ onAddToCart }) {
     : products.filter(p => p.category === activeCategory);
 
   return (
-    <section id="catalog" className="pt-0 pb-24 bg-transparent opacity-0 translate-y-10" ref={sectionRef}>
+    <section id="catalog" className="py-24 md:py-32 bg-transparent opacity-0 translate-y-10" ref={sectionRef}>
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-md">

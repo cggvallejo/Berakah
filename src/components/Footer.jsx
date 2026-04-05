@@ -5,7 +5,7 @@ import { settings } from '../data/settings';
 
 function Footer() {
   return (
-    <footer className="bg-accent text-white py-24">
+    <footer className="bg-accent text-white py-24 md:py-32">
       <div className="container grid md:grid-cols-4 gap-16">
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-4xl font-serif mb-8 tracking-tighter">BERAKAH</h2>

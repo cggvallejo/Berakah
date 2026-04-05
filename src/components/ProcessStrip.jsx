@@ -26,7 +26,7 @@ function ProcessStrip() {
   ];
 
   return (
-    <section id="process" className="bg-[#f8f4ed] py-24">
+    <section id="process" className="bg-[#f8f4ed] py-24 md:py-32">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl mb-4">El Arte de la Creación</h2>

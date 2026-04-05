@@ -7,7 +7,7 @@ function Locations() {
   const currentLoc = settings.locations[activeTab];
 
   return (
-    <section id="ubicaciones" className="py-28 bg-[#fcfaf7] overflow-hidden">
+    <section id="ubicaciones" className="py-24 md:py-32 bg-[#fcfaf7] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-serif text-[#2d1a0a] mb-6 italic">Nuestras Casas</h2>

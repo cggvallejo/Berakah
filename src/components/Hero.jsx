@@ -1,15 +1,23 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import BrandLogo from './BrandLogo';
 import WeaveBackground from './WeaveBackground';
 import MexicanHeritage from './MexicanHeritage';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 function Hero() {
   const contentRef = useRef(null);
   const title1Ref = useRef(null);
   const title2Ref = useRef(null);
   const ctaRef = useRef(null);
+
+  const handleSmoothScroll = (e, target) => {
+    e.preventDefault();
+    gsap.to(window, { duration: 1, scrollTo: target, ease: "power3.inOut" });
+  };
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -83,7 +91,7 @@ function Hero() {
         </div>
 
         <div ref={ctaRef} className="mb-8">
-          <a href="#catalog" className="group relative inline-block bg-accent text-white px-16 py-6 text-sm uppercase tracking-[0.4em] font-bold hover:bg-gold transition-all duration-700 premium-shadow shimmer-gold">
+          <a href="#catalog" onClick={(e) => handleSmoothScroll(e, "#catalog")} className="group relative inline-block bg-accent text-white px-16 py-6 text-sm uppercase tracking-[0.4em] font-bold hover:bg-gold transition-all duration-700 premium-shadow shimmer-gold cursor-pointer">
             Explorar Colección
             <span className="absolute inset-0 border border-gold/30 scale-110 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500" />
           </a>
