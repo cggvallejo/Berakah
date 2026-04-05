@@ -5,9 +5,7 @@ import {
   Landmark, Wallet, Navigation, Edit3, Package, Phone,
   Star, Sparkles, Heart
 } from 'lucide-react';
-
-// ─── CONFIGURACIÓN ────────────────────────────────────────────────
-const WA_NUMBER = '5219990000000'; // ← Cambiar por el número real
+import { WA_NUMBER, buildWhatsAppMessage } from '../utils/whatsapp.js';
 
 // ─── PASOS DEL CHECKOUT ───────────────────────────────────────────
 const STEPS = {
@@ -30,21 +28,6 @@ const PAYMENT_METHODS = [
   { id: 'transferencia', label: 'Transferencia Bancaria', sublabel: 'Te enviamos la CLABE al confirmar', icon: <Landmark size={15} />, color: '#2d6a4f' },
   { id: 'efectivo', label: 'Efectivo / Terminal', sublabel: 'Disponible en entregas locales', icon: <CreditCard size={15} />, color: '#b5855c' },
 ];
-
-function buildWhatsAppMessage(items, orderData) {
-  const lines = items.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
-  const payLabel = PAYMENT_METHODS.find(p => p.id === orderData.payment)?.label || orderData.payment;
-  return encodeURIComponent(
-    `🛍️ *NUEVO PEDIDO BERAKAH*\n\n` +
-    `📦 *Productos:*\n${lines}\n\n` +
-    `💰 *Total: $${total.toLocaleString()} MXN*\n\n` +
-    `👤 *Cliente:* ${orderData.name}\n` +
-    `📍 *Dirección:* ${orderData.address}\n` +
-    `💳 *Pago preferido:* ${payLabel}\n\n` +
-    `_Pedido enviado desde Berakah Boutique 🌿_`
-  );
-}
 
 // ─── AVATAR DEL BOT ───────────────────────────────────────────────
 function BotAvatar() {
@@ -265,7 +248,8 @@ function Chatbot({ cartItems = [] }) {
   };
 
   const sendWhatsApp = () => {
-    const msg = buildWhatsAppMessage(cartItems, orderData);
+    const payLabel = PAYMENT_METHODS.find(p => p.id === orderData.payment)?.label || orderData.payment;
+    const msg = buildWhatsAppMessage(cartItems, orderData, payLabel);
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
     goTo(STEPS.CK_DONE);
   };
