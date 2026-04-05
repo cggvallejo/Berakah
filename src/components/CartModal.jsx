@@ -13,7 +13,7 @@ const PAYMENT_METHODS = [
   { id: 'efectivo', label: 'Efectivo / Terminal', sub: 'Pago al recibir', icon: <CreditCard size={18} />, color: '#b5855c' },
 ];
 
-function buildWhatsAppMessage(items, data) {
+export function buildWhatsAppMessage(items, data) {
   const lines = items.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
   const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
   const payLabel = PAYMENT_METHODS.find(p => p.id === data.payment)?.label || data.payment;
