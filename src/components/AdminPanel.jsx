@@ -76,7 +76,7 @@ const GITHUB_REPO = 'cggvallejo/Berakah';
 const PRODUCTS_PATH = 'src/data/products.js';
 const SETTINGS_PATH = 'src/data/settings.js';
 
-async function syncWithGithub(token, filePath, content, onProgress) {
+export async function syncWithGithub(token, filePath, content, onProgress) {
   if (!token) throw new Error('No hay token configurado');
   
   const headers = {
