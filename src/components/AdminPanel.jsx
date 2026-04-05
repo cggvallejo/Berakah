@@ -657,12 +657,31 @@ function AdminDashboard({ onLogout }) {
   }, [products, activeCategory, searchQuery]);
 
   // Stats
-  const totalProducts = products.length;
-  const categoryCount = CATEGORIES.reduce((acc, cat) => {
-    acc[cat] = products.filter(p => p.category === cat).length;
-    return acc;
-  }, {});
-  const avgPrice = Math.round(products.reduce((s, p) => s + p.price, 0) / products.length);
+  const stats = useMemo(() => {
+    const total = products.length;
+    const catCount = CATEGORIES.reduce((acc, cat) => { acc[cat] = 0; return acc; }, {});
+
+    if (total === 0) {
+      return { totalProducts: 0, categoryCount: catCount, avgPrice: 0 };
+    }
+
+    let sumPrice = 0;
+    for (let i = 0; i < total; i++) {
+      const p = products[i];
+      sumPrice += (p.price || 0);
+      if (catCount[p.category] !== undefined) {
+        catCount[p.category]++;
+      }
+    }
+
+    return {
+      totalProducts: total,
+      categoryCount: catCount,
+      avgPrice: Math.round(sumPrice / total)
+    };
+  }, [products]);
+
+  const { totalProducts, categoryCount, avgPrice } = stats;
 
   return (
     <div className="min-h-screen" style={{ background: '#f8f6f2', fontFamily: 'Inter, sans-serif' }}>
