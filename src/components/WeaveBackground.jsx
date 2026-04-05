@@ -12,6 +12,9 @@ const WeaveBackground = () => {
     let animationFrameId;
     let width, height;
 
+    let waveCacheSin = new Float32Array(0);
+    let waveCacheCos = new Float32Array(0);
+
     class Thread {
       constructor(index, isVertical) {
         this.index = index;
@@ -36,12 +39,16 @@ const WeaveBackground = () => {
         const count = this.isVertical ? width / spacing : height / spacing;
         
         let x, y;
+        const b = time * 0.001 * this.speed + this.phase;
+        const sinB = Math.sin(b);
+        const cosB = Math.cos(b);
 
         if (this.isVertical) {
           x = this.index * spacing;
           ctx.moveTo(x, 0);
-          for (let i = 0; i <= height; i += 15) {
-            const wave = Math.sin(i * 0.005 + time * 0.001 * this.speed + this.phase) * 20;
+          for (let i = 0, idx = 0; i <= height; i += 15, idx++) {
+            // sin(a + b) = sin(a)cos(b) + cos(a)sin(b)
+            const wave = (waveCacheSin[idx] * cosB + waveCacheCos[idx] * sinB) * 20;
             
             // Mouse Interaction distance
             const dx = x + wave - mouseRef.current.x;
@@ -54,8 +61,9 @@ const WeaveBackground = () => {
         } else {
           y = this.index * spacing;
           ctx.moveTo(0, y);
-          for (let i = 0; i <= width; i += 15) {
-            const wave = Math.cos(i * 0.005 + time * 0.001 * this.speed + this.phase) * 20;
+          for (let i = 0, idx = 0; i <= width; i += 15, idx++) {
+            // cos(a + b) = cos(a)cos(b) - sin(a)sin(b)
+            const wave = (waveCacheCos[idx] * cosB - waveCacheSin[idx] * sinB) * 20;
             
             // Mouse Interaction distance
             const dx = i - mouseRef.current.x;
@@ -75,6 +83,18 @@ const WeaveBackground = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       
+      const maxDim = Math.max(width, height);
+      const numElements = Math.ceil(maxDim / 15) + 1;
+
+      if (waveCacheSin.length < numElements) {
+        waveCacheSin = new Float32Array(numElements);
+        waveCacheCos = new Float32Array(numElements);
+        for (let i = 0, idx = 0; i <= maxDim + 15; i += 15, idx++) {
+          waveCacheSin[idx] = Math.sin(i * 0.005);
+          waveCacheCos[idx] = Math.cos(i * 0.005);
+        }
+      }
+
       threads.length = 0;
       const spacing = 50;
       const verticalCount = Math.floor(width / spacing) + 1;
