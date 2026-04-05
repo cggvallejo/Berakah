@@ -349,16 +349,12 @@ function Chatbot({ cartItems = [] }) {
           <>
             <BubbleBot text="Aceptamos los siguientes métodos de pago 💳 Elige el que más te convenga:" />
             <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {[
-                { icon: <Wallet size={14} />, t: 'Mercado Pago / Libre', d: 'Pago seguro en línea · Todas las tarjetas · Meses sin intereses disponibles.', color: '#3483fa' },
-                { icon: <Landmark size={14} />, t: 'Transferencia Bancaria', d: 'Te enviamos la CLABE Interbancaria al confirmar tu pedido.', color: '#2d6a4f' },
-                { icon: <CreditCard size={14} />, t: 'Efectivo / Terminal', d: 'Disponible en entregas locales y puntos de pickup en Mérida.', color: '#b5855c' },
-              ].map((m, i) => (
+              {PAYMENT_METHODS.map((m, i) => (
                 <div key={i} style={{ display: 'flex', gap: '12px', padding: '12px', background: 'rgba(74,55,40,0.04)', borderRadius: '12px', alignItems: 'flex-start' }}>
                   <span style={{ color: m.color, display: 'flex', alignItems: 'center', marginTop: '2px' }}>{m.icon}</span>
                   <div>
-                    <p style={{ fontSize: '12px', fontWeight: 700, color: '#2a1f17', marginBottom: '2px' }}>{m.t}</p>
-                    <p style={{ fontSize: '11px', color: 'rgba(74,55,40,0.5)', lineHeight: 1.4 }}>{m.d}</p>
+                    <p style={{ fontSize: '12px', fontWeight: 700, color: '#2a1f17', marginBottom: '2px' }}>{m.label}</p>
+                    <p style={{ fontSize: '11px', color: 'rgba(74,55,40,0.5)', lineHeight: 1.4 }}>{m.sublabel}</p>
                   </div>
                 </div>
               ))}
