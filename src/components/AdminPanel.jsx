@@ -12,7 +12,7 @@ const SETTINGS_STORAGE_KEY = 'berakah_settings_override';
 const CATEGORIES = ['Bandoleras', 'Bolsas', 'Mochilas', 'Portacelulares', 'Esenciales'];
 
 // ─── Hook: productos con persistencia ──────────────────────────────────────
-function useAdminProducts() {
+export function useAdminProducts() {
   const loadProducts = () => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
