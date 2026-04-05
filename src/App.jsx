@@ -3,6 +3,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Locations from './components/Locations';
 import Catalog from './components/Catalog';
+import ProcessStrip from './components/ProcessStrip';
+import BrandLogo from './components/BrandLogo';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
 import CartModal from './components/CartModal';
@@ -43,7 +45,9 @@ function App() {
       
       <main>
         <Hero />
+        <ProcessStrip />
         <Catalog onAddToCart={addToCart} />
+        <BrandLogo />
         <Locations />
       </main>
 
