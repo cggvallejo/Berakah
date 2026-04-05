@@ -31,9 +31,7 @@ const PAYMENT_METHODS = [
   { id: 'efectivo', label: 'Efectivo / Terminal', sublabel: 'Disponible en entregas locales', icon: <CreditCard size={15} />, color: '#b5855c' },
 ];
 
-function buildWhatsAppMessage(items, orderData) {
-  const lines = items.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
+function buildWhatsAppMessage(lines, total, orderData) {
   const payLabel = PAYMENT_METHODS.find(p => p.id === orderData.payment)?.label || orderData.payment;
   return encodeURIComponent(
     `🛍️ *NUEVO PEDIDO BERAKAH*\n\n` +
@@ -264,13 +262,14 @@ function Chatbot({ cartItems = [] }) {
     goTo(STEPS.CK_CONFIRM);
   };
 
+  const total = cartItems.reduce((acc, i) => acc + (i.price || 850), 0);
+
   const sendWhatsApp = () => {
-    const msg = buildWhatsAppMessage(cartItems, orderData);
+    const lines = cartItems.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
+    const msg = buildWhatsAppMessage(lines, total, orderData);
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
     goTo(STEPS.CK_DONE);
   };
-
-  const total = cartItems.reduce((acc, i) => acc + (i.price || 850), 0);
   const canCheckout = cartItems.length > 0;
 
   // ─── CONTENIDO POR PASO ───────────────────────────────────────
