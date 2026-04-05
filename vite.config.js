@@ -7,4 +7,9 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./vitest.setup.js'],
+  }
 })
