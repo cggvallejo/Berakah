@@ -43,8 +43,8 @@ function App() {
       
       <main>
         <Hero />
-        <Locations />
         <Catalog onAddToCart={addToCart} />
+        <Locations />
       </main>
 
       <Footer />
