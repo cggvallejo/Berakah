@@ -2,7 +2,7 @@ import json
 import os
 
 def classify_products():
-    path = r'C:\Users\carl2\.gemini\antigravity\scratch\berakah-artesanal\src\data\products.js'
+    path = 'src/data/products.js'
     
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
