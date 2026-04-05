@@ -15,7 +15,7 @@ function Locations() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Centered Header - Fixed Spacing */}
+        {/* Centered Header */}
         <div className="text-center mb-16 pt-10">
           <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-gold mb-4 block">Experiencia Berakah</span>
           <h2 className="text-5xl md:text-7xl font-serif text-accent mb-8 italic">Nuestras Ubicaciones</h2>
@@ -25,9 +25,9 @@ function Locations() {
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-12" />
         </div>
 
-        {/* Tab Selector - Better Centering & Contrast */}
+        {/* Tab Selector */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1.5 bg-white rounded-full shadow-lg border border-black/5">
+          <div className="inline-flex p-1.5 bg-white rounded-full shadow-xl border border-black/5">
             {settings.locations.map((loc, index) => (
               <button
                 key={loc.id}
@@ -44,11 +44,11 @@ function Locations() {
           </div>
         </div>
 
-        {/* Improved Side-by-Side Layout */}
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-0 rounded-[40px] overflow-hidden bg-white shadow-2xl border border-black/5">
+        {/* Full Interactive Map Layout */}
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-0 rounded-[40px] overflow-hidden bg-white shadow-2xl border border-black/5 min-h-[600px]">
           
           {/* Info Side (40%) */}
-          <div className="lg:col-span-2 p-12 md:p-16 flex flex-col justify-between border-r border-black/5">
+          <div className="lg:col-span-2 p-12 md:p-16 flex flex-col justify-between border-r border-black/5 bg-white z-10">
             <div>
               <div className="flex items-center gap-3 mb-10 text-gold">
                 <Navigation size={18} />
@@ -94,32 +94,23 @@ function Locations() {
                 className="group flex items-center justify-center gap-4 bg-accent text-white py-5 px-8 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg hover:shadow-gold/30"
               >
                 <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
-                Cómo llegar
+                Cómo llegar (Google Maps)
               </a>
             </div>
           </div>
 
-          {/* Visual Side (60%) */}
-          <div className="lg:col-span-3 h-[500px] lg:h-auto flex flex-col">
-            {/* Split Image / Map */}
-            <div className="h-1/2 relative group overflow-hidden">
-               <img 
-                src={currentLoc.image} 
-                alt={currentLoc.name}
-                className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-accent/20 transition-opacity group-hover:opacity-0" />
-            </div>
-            <div className="h-1/2 relative">
-              <iframe 
-                title={`Mapa ${currentLoc.name}`}
-                src={currentLoc.mapIframe}
-                className="w-full h-full grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-              />
-            </div>
+          {/* Map Side (60%) */}
+          <div className="lg:col-span-3 h-[400px] lg:h-auto relative bg-[#f8f5f0]">
+            <iframe 
+              title={`Mapa ${currentLoc.name}`}
+              src={currentLoc.mapIframe}
+              className="w-full h-full contrast-[1.02] brightness-[1.01]"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+            />
+            {/* Subtle Overlay to match aesthetic */}
+            <div className="absolute inset-0 pointer-events-none border-l border-black/5 shadow-[inset_20px_0_40px_-20px_rgba(0,0,0,0.05)]" />
           </div>
         </div>
 
