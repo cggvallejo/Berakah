@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   X, Trash2, ArrowLeft, User, MapPin, Navigation, Edit3,
   CheckCircle, Phone, Wallet, Landmark, CreditCard, Send, ShoppingBag
@@ -55,7 +55,7 @@ function CartModal({ items, onClose, onRemove }) {
   const [geoStatus, setGeoStatus] = useState('idle'); // idle | loading | success | error
   const [geoText, setGeoText] = useState('');
 
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
+  const total = useMemo(() => items.reduce((acc, i) => acc + (i.price || 850), 0), [items]);
 
   const goTo = (s) => { setHistory(h => [...h, step]); setStep(s); setInputVal(''); };
   const goBack = () => { const p = history[history.length - 1]; setHistory(h => h.slice(0, -1)); setStep(p || 'cart'); setInputVal(''); };
