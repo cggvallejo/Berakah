@@ -3,30 +3,7 @@ import {
   X, Trash2, ArrowLeft, User, MapPin, Navigation, Edit3,
   CheckCircle, Phone, Wallet, Landmark, CreditCard, Send, ShoppingBag
 } from 'lucide-react';
-
-// ─── CONFIG ──────────────────────────────────────────────────────────────────
-const WA_NUMBER = '5219990000000'; // ← Cambiar por el número real del negocio
-
-const PAYMENT_METHODS = [
-  { id: 'mercadopago', label: 'Mercado Pago / Libre', sub: 'Pago seguro en línea', icon: <Wallet size={18} />, color: '#3483fa' },
-  { id: 'transferencia', label: 'Transferencia Bancaria', sub: 'CLABE al confirmar', icon: <Landmark size={18} />, color: '#2d6a4f' },
-  { id: 'efectivo', label: 'Efectivo / Terminal', sub: 'Pago al recibir', icon: <CreditCard size={18} />, color: '#b5855c' },
-];
-
-function buildWhatsAppMessage(items, data) {
-  const lines = items.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
-  const payLabel = PAYMENT_METHODS.find(p => p.id === data.payment)?.label || data.payment;
-  return encodeURIComponent(
-    `🛍️ *NUEVO PEDIDO BERAKAH*\n\n` +
-    `📦 *Productos:*\n${lines}\n\n` +
-    `💰 *Total: $${total.toLocaleString()} MXN*\n\n` +
-    `👤 *Cliente:* ${data.name}\n` +
-    `📍 *Dirección:* ${data.address}\n` +
-    `💳 *Pago preferido:* ${payLabel}\n\n` +
-    `_Pedido enviado desde Berakah Boutique_`
-  );
-}
+import { WA_NUMBER, PAYMENT_METHODS, buildWhatsAppMessage } from '../utils/whatsapp.js';
 
 // ─── PASOS ────────────────────────────────────────────────────────────────────
 const STEPS = ['cart', 'name', 'address', 'address_geo', 'address_manual', 'payment', 'confirm', 'done'];
@@ -315,11 +292,11 @@ function CartModal({ items, onClose, onRemove }) {
                   >
                     <span className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-colors"
                       style={{ background: `${m.color}15`, color: m.color }}>
-                      {m.icon}
+                      <m.Icon size={18} />
                     </span>
                     <div>
                       <p className="text-sm font-semibold">{m.label}</p>
-                      <p className="text-xs text-accent/40 mt-0.5">{m.sub}</p>
+                      <p className="text-xs text-accent/40 mt-0.5">{m.sublabel}</p>
                     </div>
                   </button>
                 ))}
