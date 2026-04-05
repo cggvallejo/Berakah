@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   X, Trash2, ArrowLeft, User, MapPin, Navigation, Edit3,
   CheckCircle, Phone, Wallet, Landmark, CreditCard, Send, ShoppingBag
@@ -13,9 +13,7 @@ const PAYMENT_METHODS = [
   { id: 'efectivo', label: 'Efectivo / Terminal', sub: 'Pago al recibir', icon: <CreditCard size={18} />, color: '#b5855c' },
 ];
 
-function buildWhatsAppMessage(items, data) {
-  const lines = items.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
+function buildWhatsAppMessage(lines, total, data) {
   const payLabel = PAYMENT_METHODS.find(p => p.id === data.payment)?.label || data.payment;
   return encodeURIComponent(
     `🛍️ *NUEVO PEDIDO BERAKAH*\n\n` +
@@ -55,7 +53,17 @@ function CartModal({ items, onClose, onRemove }) {
   const [geoStatus, setGeoStatus] = useState('idle'); // idle | loading | success | error
   const [geoText, setGeoText] = useState('');
 
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
+  const { total, lines } = useMemo(() => {
+    let t = 0;
+    const lArray = [];
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const p = item.price || 850;
+      t += p;
+      lArray.push(`• ${item.name} — $${p.toLocaleString()} MXN`);
+    }
+    return { total: t, lines: lArray.join('\n') };
+  }, [items]);
 
   const goTo = (s) => { setHistory(h => [...h, step]); setStep(s); setInputVal(''); };
   const goBack = () => { const p = history[history.length - 1]; setHistory(h => h.slice(0, -1)); setStep(p || 'cart'); setInputVal(''); };
@@ -86,7 +94,7 @@ function CartModal({ items, onClose, onRemove }) {
   };
 
   const sendWA = () => {
-    window.open(`https://wa.me/${WA_NUMBER}?text=${buildWhatsAppMessage(items, data)}`, '_blank');
+    window.open(`https://wa.me/${WA_NUMBER}?text=${buildWhatsAppMessage(lines, total, data)}`, '_blank');
     goTo('done');
   };
 

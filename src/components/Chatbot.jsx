@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import {
   MessageCircle, X, ChevronRight, CreditCard, ShoppingCart,
   HelpCircle, MapPin, User, CheckCircle, Send, ArrowLeft,
@@ -31,9 +31,7 @@ const PAYMENT_METHODS = [
   { id: 'efectivo', label: 'Efectivo / Terminal', sublabel: 'Disponible en entregas locales', icon: <CreditCard size={15} />, color: '#b5855c' },
 ];
 
-function buildWhatsAppMessage(items, orderData) {
-  const lines = items.map(i => `• ${i.name} — $${(i.price || 850).toLocaleString()} MXN`).join('\n');
-  const total = items.reduce((acc, i) => acc + (i.price || 850), 0);
+function buildWhatsAppMessage(lines, total, orderData) {
   const payLabel = PAYMENT_METHODS.find(p => p.id === orderData.payment)?.label || orderData.payment;
   return encodeURIComponent(
     `🛍️ *NUEVO PEDIDO BERAKAH*\n\n` +
@@ -264,13 +262,24 @@ function Chatbot({ cartItems = [] }) {
     goTo(STEPS.CK_CONFIRM);
   };
 
+  const { total, lines } = useMemo(() => {
+    let t = 0;
+    const lArray = [];
+    for (let i = 0; i < cartItems.length; i++) {
+      const item = cartItems[i];
+      const p = item.price || 850;
+      t += p;
+      lArray.push(`• ${item.name} — $${p.toLocaleString()} MXN`);
+    }
+    return { total: t, lines: lArray.join('\n') };
+  }, [cartItems]);
+
   const sendWhatsApp = () => {
-    const msg = buildWhatsAppMessage(cartItems, orderData);
+    const msg = buildWhatsAppMessage(lines, total, orderData);
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
     goTo(STEPS.CK_DONE);
   };
 
-  const total = cartItems.reduce((acc, i) => acc + (i.price || 850), 0);
   const canCheckout = cartItems.length > 0;
 
   // ─── CONTENIDO POR PASO ───────────────────────────────────────
