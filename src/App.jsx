@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Locations from './components/Locations';
 import Catalog from './components/Catalog';
+import CustomDesigns from './components/CustomDesigns';
 import ProcessStrip from './components/ProcessStrip';
 import BrandLogo from './components/BrandLogo';
 import Chatbot from './components/Chatbot';
@@ -49,6 +50,7 @@ function App() {
         <Catalog onAddToCart={addToCart} />
         <BrandLogo />
         <Locations />
+        <CustomDesigns />
       </main>
 
       <Footer />
