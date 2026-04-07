@@ -28,6 +28,7 @@ function Navbar({ cartCount, openCart }) {
           
           <div className="hidden lg:flex gap-12 text-[13px] uppercase tracking-[0.4em] font-bold opacity-60">
             <a href="#catalog" className="hover:text-gold hover:opacity-100 transition-all">Colecciones</a>
+            <a href="#personalizados" className="hover:text-gold hover:opacity-100 transition-all">Personalizados</a>
             <a href="#ubicaciones" className="hover:text-gold hover:opacity-100 transition-all">Ubicaciones</a>
             <a href="#process" className="hover:text-gold hover:opacity-100 transition-all">Artesanía</a>
           </div>
@@ -80,6 +81,13 @@ function Navbar({ cartCount, openCart }) {
               className="hover:pl-8 transition-all duration-500 hover:text-gold"
             >
               Colecciones
+            </a>
+            <a 
+              href="#personalizados" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:pl-8 transition-all duration-500 hover:text-gold"
+            >
+              Diseños Personalizados
             </a>
             <a 
               href="#ubicaciones" 

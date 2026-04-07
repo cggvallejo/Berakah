@@ -6,112 +6,112 @@ const customDesigns = [
     title: "Oaxaca - Tradición Viva",
     person: "Elena",
     location: "Oaxaca",
-    image: "/images/custom/oaxaca_elena.png",
+    image: "images/custom/oaxaca_elena.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Pátzcuaro - Alma Michoacana",
     person: "Sofía",
     location: "Michoacán",
-    image: "/images/custom/patzcuaro_sofia.png",
+    image: "images/custom/patzcuaro_sofia.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Tepic - Arte Huichol",
     person: "Alejandro",
     location: "Nayarit",
-    image: "/images/custom/tepic_alejandro.png",
+    image: "images/custom/tepic_alejandro.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Tulum - Brisa del Caribe",
     person: "Isabella",
     location: "Quintana Roo",
-    image: "/images/custom/tulum_isabella.png",
+    image: "images/custom/tulum_isabella.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Hidalgo - Magia Otomí",
     person: "Mateo",
     location: "Hidalgo",
-    image: "/images/custom/hidalgo_mateo.png",
+    image: "images/custom/hidalgo_mateo.png",
     type: "Bolsa de Yute"
   },
   {
     title: "México - Corazón Azteca",
     person: "Santiago",
     location: "CDMX",
-    image: "/images/custom/mexico_santiago.png",
+    image: "images/custom/mexico_santiago.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Michoacán - Monarca",
     person: "Valeria",
     location: "Michoacán",
-    image: "/images/custom/michoacan_valeria.png",
+    image: "images/custom/michoacan_valeria.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Jalisco - Esencia de Agave",
     person: "Juan",
     location: "Jalisco",
-    image: "/images/custom/jalisco_juan.png",
+    image: "images/custom/jalisco_juan.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Cancún - Paraíso Tropical",
     person: "Camila",
     location: "Quintana Roo",
-    image: "/images/custom/cancun_camila.png",
+    image: "images/custom/cancun_camila.png",
     type: "Bolsa de Yute"
   },
   {
     title: "San Cristóbal - Color Ancestral",
     person: "Miguel",
     location: "Chiapas",
-    image: "/images/custom/sancristobal_miguel.png",
+    image: "images/custom/sancristobal_miguel.png",
     type: "Bolsa de Yute"
   },
   {
     title: "Taxco - Brillo de Plata",
     person: "Ana",
     location: "Guerrero",
-    image: "/images/custom/monedero_taxco_ana.png",
+    image: "images/custom/monedero_taxco_ana.png",
     type: "Monedero"
   },
   {
     title: "Mérida - Geometría Maya",
     person: "Pablo",
     location: "Yucatán",
-    image: "/images/custom/monedero_merida_pablo.png",
+    image: "images/custom/monedero_merida_pablo.png",
     type: "Monedero"
   },
   {
     title: "Guanajuato - Callejón del Beso",
     person: "Rosa",
     location: "Guanajuato",
-    image: "/images/custom/monedero_guanajuato_rosa.png",
+    image: "images/custom/monedero_guanajuato_rosa.png",
     type: "Monedero"
   },
   {
     title: "Puerto Vallarta - Atardecer Dorado",
     person: "Oscar",
     location: "Jalisco",
-    image: "/images/custom/portacelular_vallarta_oscar.png",
+    image: "images/custom/portacelular_vallarta_oscar.png",
     type: "Porta Celular"
   },
   {
     title: "Cholula - Color de Talavera",
     person: "Fer",
     location: "Puebla",
-    image: "/images/custom/portacelular_cholula_fer.png",
+    image: "images/custom/portacelular_cholula_fer.png",
     type: "Porta Celular"
   },
   {
     title: "Izamal - La Ciudad Amarilla",
     person: "Luis",
     location: "Yucatán",
-    image: "/images/custom/portacelular_izamal_luis.png",
+    image: "images/custom/portacelular_izamal_luis.png",
     type: "Porta Celular"
   }
 ];
