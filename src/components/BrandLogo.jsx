@@ -102,18 +102,23 @@ const BrandLogo = ({ className = "", subtitle = "" }) => {
       </div>
       
       {subtitle && (
-        <div className="flex items-center justify-center mt-4 overflow-visible min-h-[1.5em] w-full">
-          {subtitle.split('').map((char, index) => (
-            <span 
-              key={index}
-              className="subtitle-letter inline-block text-black font-sans uppercase font-medium tracking-[0.35em]"
-              style={{ 
-                minWidth: char === ' ' ? '0.5em' : 'auto',
-                fontSize: '0.135em'
-              }}
-            >
-              {char}
-            </span>
+        <div className="flex flex-col items-center justify-center mt-6 overflow-visible w-full gap-2">
+          {subtitle.split('\n').map((line, lineIndex) => (
+            <div key={lineIndex} className="flex items-center justify-center flex-wrap">
+              {line.split('').map((char, index) => (
+                <span 
+                  key={index}
+                  className="subtitle-letter inline-block text-black font-sans font-medium tracking-[0.2em] md:tracking-[0.35em]"
+                  style={{ 
+                    minWidth: char === ' ' ? '0.3em' : 'auto',
+                    fontSize: lineIndex === 0 ? '0.15em' : '0.11em',
+                    textTransform: lineIndex === 0 ? 'uppercase' : 'none'
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
           ))}
         </div>
       )}

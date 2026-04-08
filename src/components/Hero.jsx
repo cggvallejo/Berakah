@@ -60,7 +60,7 @@ function Hero() {
         <div className="shimmer-gold rounded-full px-4 py-1">
           <BrandLogo 
             className="text-[10vw] sm:text-[10rem] mt-4" 
-            subtitle="TRADICIÓN & LUJO MEXICANO"
+            subtitle={"Eclesiastes 3:1\nTodo tiene su tiempo, y todo lo que se quiere debajo del cielo tiene su hora."}
           />
         </div>
         
