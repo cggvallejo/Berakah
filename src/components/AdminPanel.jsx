@@ -683,8 +683,8 @@ function AdminDashboard({ onLogout }) {
                 <span className="text-amber-400 font-serif text-lg font-bold">B</span>
               </div>
               <div>
-                <h1 className="font-bold text-gray-900 text-base leading-none">Panel Berakah</h1>
-                <p className="text-xs text-gray-400 mt-0.5">Admin v2.1</p>
+                <h1 className="font-bold text-gray-900 text-base leading-none">Admin Berakah</h1>
+                <p className="text-xs text-gray-400 mt-0.5">Control de Catálogo</p>
               </div>
             </div>
 
@@ -727,13 +727,7 @@ function AdminDashboard({ onLogout }) {
               </svg>
               Nuevo
             </button>
-            <button onClick={() => setShowResetConfirm(true)}
-              className="hidden sm:flex items-center gap-2 text-xs text-red-500 hover:text-red-700 border border-red-100 hover:border-red-200 bg-red-50 hover:bg-red-100 px-3 py-2 rounded-xl transition-all">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              Restaurar
-            </button>
+
             <button onClick={onLogout}
               className="flex items-center gap-2 text-xs text-gray-500 hover:text-gray-800 border border-gray-200 hover:border-gray-300 px-3 py-2 rounded-xl transition-all">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

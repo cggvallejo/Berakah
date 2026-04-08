@@ -505,7 +505,7 @@ export const products = [
   },
   {
     "id": "c3f6ac71-05d1-4f4f-b066-f6569691e120",
-    "name": "Estos son los diseños que manejo para las bolsas",
+    "name": "Bolsa Artesanal Premium",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_00adcd3d.jpg",
     "price": 779,
@@ -513,7 +513,7 @@ export const products = [
   },
   {
     "id": "4faad899-6e81-44ef-b99e-6b164e0113e1",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 2",
+    "name": "Bolsa Artesanal Premium - Variante 2",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0307ffcf.jpg",
     "price": 639,
@@ -521,7 +521,7 @@ export const products = [
   },
   {
     "id": "e06a5158-baf8-44c9-96cf-c6312f4f3507",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 3",
+    "name": "Bolsa Artesanal Premium - Variante 3",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0421499e.jpg",
     "price": 715,
@@ -529,7 +529,7 @@ export const products = [
   },
   {
     "id": "45c751be-e214-4160-bef3-99347289fde9",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 4",
+    "name": "Bolsa Artesanal Premium - Variante 4",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_067aa543.jpg",
     "price": 638,
@@ -537,7 +537,7 @@ export const products = [
   },
   {
     "id": "77309b16-506c-43c8-82ff-20f72cf9e54a",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 5",
+    "name": "Bolsa Artesanal Premium - Variante 5",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0aac92e8.jpg",
     "price": 633,
@@ -545,7 +545,7 @@ export const products = [
   },
   {
     "id": "63adca0f-8266-4c86-9211-9fcd128fe781",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 6",
+    "name": "Bolsa Artesanal Premium - Variante 6",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0b5cae47.jpg",
     "price": 758,
@@ -553,7 +553,7 @@ export const products = [
   },
   {
     "id": "d28a1ba6-d9c2-43b3-afe0-70cfceed01b9",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 7",
+    "name": "Bolsa Artesanal Premium - Variante 7",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0be070a3.jpg",
     "price": 671,
@@ -561,7 +561,7 @@ export const products = [
   },
   {
     "id": "d52048a4-c617-4398-9f59-73321b53c5b4",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 8",
+    "name": "Bolsa Artesanal Premium - Variante 8",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0d2e3a19.jpg",
     "price": 663,
@@ -569,7 +569,7 @@ export const products = [
   },
   {
     "id": "a2829693-1bcd-4ab7-95d0-018703e0f1b4",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 9",
+    "name": "Bolsa Artesanal Premium - Variante 9",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_10f4da6f.jpg",
     "price": 672,
@@ -577,7 +577,7 @@ export const products = [
   },
   {
     "id": "0c0b7b03-2aee-4eeb-be5d-cd3b25536a58",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 10",
+    "name": "Bolsa Artesanal Premium - Variante 10",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_12a1a54e.jpg",
     "price": 585,
@@ -585,7 +585,7 @@ export const products = [
   },
   {
     "id": "c14b6dce-f088-4415-a578-923d79003e27",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 11",
+    "name": "Bolsa Artesanal Premium - Variante 11",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_1d20bf51.jpg",
     "price": 743,
@@ -593,7 +593,7 @@ export const products = [
   },
   {
     "id": "f97f3126-a6c1-4fdf-99c3-cc1ef0538d0b",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 12",
+    "name": "Bolsa Artesanal Premium - Variante 12",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_1f25e84a.jpg",
     "price": 681,
@@ -601,7 +601,7 @@ export const products = [
   },
   {
     "id": "892ab534-531c-445c-a17a-16dc5de64e78",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 13",
+    "name": "Bolsa Artesanal Premium - Variante 13",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_20aee140.jpg",
     "price": 779,
@@ -609,7 +609,7 @@ export const products = [
   },
   {
     "id": "12c347ce-5687-44c8-9599-148f6d1d73e9",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 14",
+    "name": "Bolsa Artesanal Premium - Variante 14",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_24a5967c.jpg",
     "price": 626,
@@ -617,7 +617,7 @@ export const products = [
   },
   {
     "id": "42a0866a-ad32-48f4-bf4d-4d140613c818",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 15",
+    "name": "Bolsa Artesanal Premium - Variante 15",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_26c16d7d.jpg",
     "price": 729,
@@ -625,7 +625,7 @@ export const products = [
   },
   {
     "id": "96b3a529-fb60-4ed8-9376-8a9ff68c98bc",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 16",
+    "name": "Bolsa Artesanal Premium - Variante 16",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_2a98ed95.jpg",
     "price": 597,
@@ -633,7 +633,7 @@ export const products = [
   },
   {
     "id": "c67a7afb-3cc7-454c-9774-9198e8dd5587",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 17",
+    "name": "Bolsa Artesanal Premium - Variante 17",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_2bd9afd9.jpg",
     "price": 796,
@@ -641,7 +641,7 @@ export const products = [
   },
   {
     "id": "6b9b4094-f3ef-452c-9db4-8bf305009957",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 18",
+    "name": "Bolsa Artesanal Premium - Variante 18",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_35f7de0d.jpg",
     "price": 650,
@@ -649,7 +649,7 @@ export const products = [
   },
   {
     "id": "3b91bb27-cac4-4e0f-b83b-42b96864aef5",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 19",
+    "name": "Bolsa Artesanal Premium - Variante 19",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3a38ae64.jpg",
     "price": 703,
@@ -657,7 +657,7 @@ export const products = [
   },
   {
     "id": "aef92e09-ed8b-43dd-8cfa-37d9ad03ef93",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 20",
+    "name": "Bolsa Artesanal Premium - Variante 20",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3a487655.jpg",
     "price": 751,
@@ -665,7 +665,7 @@ export const products = [
   },
   {
     "id": "8fc8d27b-8a46-4d69-a56c-8a57f80f2e7c",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 21",
+    "name": "Bolsa Artesanal Premium - Variante 21",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3ae406ec.jpg",
     "price": 681,
@@ -673,7 +673,7 @@ export const products = [
   },
   {
     "id": "297eba70-0e4d-4266-9c6c-d3a50342826e",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 22",
+    "name": "Bolsa Artesanal Premium - Variante 22",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3d528015.jpg",
     "price": 719,
@@ -681,7 +681,7 @@ export const products = [
   },
   {
     "id": "9cb8b9bd-3512-4758-ac78-5fe4560f0415",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 23",
+    "name": "Bolsa Artesanal Premium - Variante 23",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_43a711b2.jpg",
     "price": 729,
@@ -689,7 +689,7 @@ export const products = [
   },
   {
     "id": "c21cc440-aae2-4817-80e6-dde0c31b1aae",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 24",
+    "name": "Bolsa Artesanal Premium - Variante 24",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_43d3c5e8.jpg",
     "price": 768,
@@ -697,7 +697,7 @@ export const products = [
   },
   {
     "id": "c1dc004e-19fe-447e-ade3-9de508693548",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 25",
+    "name": "Bolsa Artesanal Premium - Variante 25",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_4759db18.jpg",
     "price": 774,
@@ -705,7 +705,7 @@ export const products = [
   },
   {
     "id": "0fe83e51-cb32-4d09-bed2-1fe1bdca7673",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 26",
+    "name": "Bolsa Artesanal Premium - Variante 26",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_484b9912.jpg",
     "price": 691,
@@ -713,7 +713,7 @@ export const products = [
   },
   {
     "id": "616abb32-85f6-43cc-bfd2-412a95ffc0ce",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 27",
+    "name": "Bolsa Artesanal Premium - Variante 27",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_4868fa90.jpg",
     "price": 601,
@@ -721,7 +721,7 @@ export const products = [
   },
   {
     "id": "1f3a6456-b152-40e4-907c-425eca381356",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 28",
+    "name": "Bolsa Artesanal Premium - Variante 28",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_4a04d6e4.jpg",
     "price": 730,
@@ -729,7 +729,7 @@ export const products = [
   },
   {
     "id": "a974798c-3717-4f3b-8abc-cf66c6cf14f0",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 29",
+    "name": "Bolsa Artesanal Premium - Variante 29",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_56265a38.jpg",
     "price": 611,
@@ -737,7 +737,7 @@ export const products = [
   },
   {
     "id": "378655e5-ca29-407e-a573-c0e970aa67f0",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 30",
+    "name": "Bolsa Artesanal Premium - Variante 30",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5aa0ca7a.jpg",
     "price": 697,
@@ -745,7 +745,7 @@ export const products = [
   },
   {
     "id": "38abe42a-35b5-4a48-b419-32402afb18c4",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 31",
+    "name": "Bolsa Artesanal Premium - Variante 31",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5ad421aa.jpg",
     "price": 757,
@@ -753,7 +753,7 @@ export const products = [
   },
   {
     "id": "bf731b6b-a89f-4973-80b7-d4f3037f7fea",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 32",
+    "name": "Bolsa Artesanal Premium - Variante 32",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5bcd1cf6.jpg",
     "price": 654,
@@ -761,7 +761,7 @@ export const products = [
   },
   {
     "id": "6078745b-c386-4238-8a4b-727049cddd0d",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 33",
+    "name": "Bolsa Artesanal Premium - Variante 33",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5cc2dabb.jpg",
     "price": 725,
@@ -769,7 +769,7 @@ export const products = [
   },
   {
     "id": "c66c296d-1dd5-4a6e-8951-9f34dd3ddd26",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 34",
+    "name": "Bolsa Artesanal Premium - Variante 34",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_60babe18.jpg",
     "price": 694,
@@ -777,7 +777,7 @@ export const products = [
   },
   {
     "id": "a11c0c8c-1dcf-4925-82d1-0a00da2161c9",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 35",
+    "name": "Bolsa Artesanal Premium - Variante 35",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_6ab7106c.jpg",
     "price": 798,
@@ -785,7 +785,7 @@ export const products = [
   },
   {
     "id": "773b289d-6bb7-4bee-a60d-0bc613b9152f",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 36",
+    "name": "Bolsa Artesanal Premium - Variante 36",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_7ae1052c.jpg",
     "price": 778,
@@ -793,7 +793,7 @@ export const products = [
   },
   {
     "id": "970b7d02-b849-48cc-ab8f-31d18d7c8db5",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 37",
+    "name": "Bolsa Artesanal Premium - Variante 37",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_8281ca2e.jpg",
     "price": 670,
@@ -801,7 +801,7 @@ export const products = [
   },
   {
     "id": "31934a32-db47-49d3-a63b-a8ae7df4d0d7",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 38",
+    "name": "Bolsa Artesanal Premium - Variante 38",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_86853071.jpg",
     "price": 657,
@@ -809,7 +809,7 @@ export const products = [
   },
   {
     "id": "c7aa3891-d292-46c6-9ab3-c28c25a62b5a",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 39",
+    "name": "Bolsa Artesanal Premium - Variante 39",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_90cb9c6e.jpg",
     "price": 669,
@@ -817,7 +817,7 @@ export const products = [
   },
   {
     "id": "3fab9c92-49c7-4d59-a873-bc4c347a5740",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 40",
+    "name": "Bolsa Artesanal Premium - Variante 40",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_b0face75.jpg",
     "price": 757,
@@ -825,7 +825,7 @@ export const products = [
   },
   {
     "id": "1c6bcf88-3c3e-4a7d-ab19-9e9b777f3e0c",
-    "name": "Estos son los diseños que manejo para las bolsas - Variante 41",
+    "name": "Bolsa Artesanal Premium - Variante 41",
     "category": "Bolsas",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_c8506d73.jpg",
     "price": 791,

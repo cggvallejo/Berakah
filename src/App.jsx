@@ -48,7 +48,7 @@ function App() {
         <Hero />
         <ProcessStrip />
         <Catalog onAddToCart={addToCart} />
-        <BrandLogo />
+
         <Locations />
         <CustomDesigns />
       </main>

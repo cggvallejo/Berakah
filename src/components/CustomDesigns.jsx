@@ -147,18 +147,10 @@ function CustomDesigns() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
       
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 text-gold/10 hidden lg:block rotate-12">
-        <Sparkles size={120} />
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-24">
-          <div className="inline-flex items-center gap-2 mb-6 px-6 py-2 rounded-full bg-gold/10 border border-gold/20 backdrop-blur-sm">
-            <Sparkles size={14} className="text-gold" />
-            <span className="text-[10px] uppercase tracking-[0.4em] font-black text-gold">Artesanía de Firma</span>
-          </div>
+
           <h2 className="text-6xl md:text-8xl font-serif text-accent mb-10 italic leading-tight">Diseños Únicos</h2>
           <p className="text-xl md:text-2xl text-accent/60 max-w-3xl mx-auto font-light leading-relaxed mb-12">
             Cada pieza es una narrativa tejida a mano. Transformamos tus visiones en legados portátiles de elegancia mexicana.
@@ -170,65 +162,32 @@ function CustomDesigns() {
           </div>
         </div>
 
-        {/* Bento Grid Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 min-h-[1000px] md:auto-rows-[300px]">
+        {/* Uniform Catalog Gallery */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {customDesigns.map((item, index) => (
             <div 
               key={index} 
-              className={`group relative rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-1000 border border-black/5 flex flex-col
-                ${item.size === 'large' ? 'md:col-span-2 md:row-span-2' : ''}
-                ${item.size === 'medium' ? 'md:col-span-2 md:row-span-1' : ''}
-                ${item.size === 'small' ? 'md:col-span-1 md:row-span-1' : ''}
-              `}
+              className="group relative rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-1000 border border-black/5 bg-white aspect-square flex items-center justify-center p-4"
             >
               {/* Image Container */}
-              <div className="absolute inset-0 z-0">
+              <div className="w-full h-full relative z-0 flex items-center justify-center">
                 <img 
                   src={item.image} 
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 scale-105 group-hover:scale-110"
+                  className="max-w-full max-h-full object-contain transition-transform duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-accent/90 via-accent/30 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
               </div>
               
-              {/* Tags */}
-              <div className="absolute top-8 left-8 z-20 flex flex-wrap gap-2">
-                <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[9px] uppercase tracking-widest font-black text-accent shadow-xl border border-white/20">
-                  {item.type}
-                </span>
-              </div>
+              {/* Content Overlay (Optional: only on hover or removed as requested) */}
+              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-              {/* Content */}
-              <div className="relative z-10 mt-auto p-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
-                <div className="flex items-center gap-2 text-gold mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  <MapPin size={12} />
-                  <span className="text-[10px] uppercase tracking-widest font-bold">{item.location}</span>
-                </div>
-                
-                <h3 className={`font-serif text-white mb-6 leading-tight group-hover:text-gold transition-colors duration-500
-                  ${item.size === 'large' ? 'text-4xl md:text-5xl' : 'text-2xl'}
-                `}>
-                  {item.title}
-                </h3>
-                
-                <div className="flex items-center justify-between pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                      <User size={16} className="text-gold" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-white/50 uppercase tracking-widest">Coleccionista</p>
-                      <p className="text-sm text-white font-bold">{item.person}</p>
-                    </div>
-                  </div>
-                  <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-accent shadow-lg shadow-gold/20 group-hover:scale-110 transition-transform duration-500">
-                    <ArrowRight size={20} />
-                  </div>
-                </div>
+              {/* Minimalist Indicator */}
+              <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-accent text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center translate-y-2 group-hover:translate-y-0">
+                <ArrowRight size={18} />
               </div>
 
               {/* Glass Inner Border */}
-              <div className="absolute inset-6 border border-white/0 group-hover:border-white/10 rounded-[30px] transition-all duration-700 pointer-events-none" />
+              <div className="absolute inset-4 border border-accent/0 group-hover:border-accent/10 rounded-[30px] transition-all duration-700 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -274,11 +233,11 @@ function CustomDesigns() {
                 </div>
               </div>
               
-              <div className="relative w-full md:w-[400px] aspect-square rounded-[40px] overflow-hidden border border-white/10 shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-1000">
+              <div className="relative w-full md:w-[400px] aspect-square rounded-[40px] overflow-hidden border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-1000">
                 <img 
                   src="/images/custom/1.png" 
                   alt="Personalización"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-white"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-accent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8 text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
