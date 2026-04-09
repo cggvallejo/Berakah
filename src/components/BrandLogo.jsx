@@ -40,10 +40,10 @@ const BrandLogo = ({ className = "", subtitle = "" }) => {
     // 2. Subtítulo (Tradición & Lujo)
     if (subtitleLetters.length > 0) {
       tl.to(subtitleLetters, {
-        opacity: 0.7, // Un poco más oscuro para mejor legibilidad
+        opacity: 0.9, // Máxima visibilidad manteniendo elegancia
         y: 0,
         duration: 1.5,
-        stagger: 0.04,
+        stagger: 0.02, // Animación más fluida
         ease: "power2.out"
       }, "-=0.2");
     }
@@ -102,24 +102,32 @@ const BrandLogo = ({ className = "", subtitle = "" }) => {
       </div>
       
       {subtitle && (
-        <div className="flex flex-col items-center justify-center mt-6 overflow-visible w-full gap-2">
-          {subtitle.split('\n').map((line, lineIndex) => (
-            <div key={lineIndex} className="flex items-center justify-center flex-wrap">
-              {line.split('').map((char, index) => (
-                <span 
-                  key={index}
-                  className="subtitle-letter inline-block text-black font-sans font-medium tracking-[0.2em] md:tracking-[0.35em]"
-                  style={{ 
-                    minWidth: char === ' ' ? '0.3em' : 'auto',
-                    fontSize: lineIndex === 0 ? '0.15em' : '0.11em',
-                    textTransform: lineIndex === 0 ? 'uppercase' : 'none'
-                  }}
-                >
-                  {char}
-                </span>
-              ))}
-            </div>
-          ))}
+        <div className="flex flex-col items-center justify-center mt-4 overflow-visible w-full gap-2">
+          {subtitle.split('\n').map((line, lineIndex) => {
+            const isReference = lineIndex === 0;
+            return (
+              <div key={lineIndex} className="flex items-center justify-center flex-wrap px-4">
+                {line.split('').map((char, index) => (
+                  <span 
+                    key={index}
+                    className={`subtitle-letter inline-block ${
+                      isReference 
+                        ? 'font-sans font-bold tracking-[0.3em] text-gold' 
+                        : 'font-serif italic text-black/90 tracking-normal'
+                    }`}
+                    style={{ 
+                      minWidth: char === ' ' ? '0.3em' : 'auto',
+                      fontSize: isReference ? '0.15em' : '0.24em',
+                      textTransform: isReference ? 'uppercase' : 'none',
+                      lineHeight: '1.2'
+                    }}
+                  >
+                    {char}
+                  </span>
+                ))}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
