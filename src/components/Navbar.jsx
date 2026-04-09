@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Menu, X, Instagram, Facebook, User } from 'lucide-react';
 import BrandLogo from './BrandLogo';
+import { settings } from '../data/settings';
 
 function Navbar({ cartCount, openCart }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -109,7 +110,9 @@ function Navbar({ cartCount, openCart }) {
             <div className="flex flex-col gap-3">
               <span className="mb-2 opacity-30">Contacto</span>
               <a href="mailto:hola@berakah.mx" className="hover:text-gold transition-colors">hola@berakah.mx</a>
-              <span>+52 55 1234 5678</span>
+              {settings.phones.map((phone, i) => (
+                <span key={i}>{phone.number} ({phone.label})</span>
+              ))}
             </div>
             <div className="flex flex-col gap-3">
               <span className="mb-2 opacity-30">Síguenos</span>

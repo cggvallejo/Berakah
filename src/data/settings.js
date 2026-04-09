@@ -1,7 +1,8 @@
 export const settings = {
   phones: [
     { label: 'Ventas 1', number: '5573945771', link: 'https://wa.me/525573945771' },
-    { label: 'Ventas 2', number: '5513827029', link: 'https://wa.me/525513827029' }
+    { label: 'Ventas 2', number: '5513827029', link: 'https://wa.me/525513827029' },
+    { label: 'Local', number: '5557098860', link: 'tel:5557098860' }
   ],
   locations: [
     {
