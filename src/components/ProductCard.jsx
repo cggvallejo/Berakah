@@ -38,19 +38,19 @@ function ProductCard({ product, onAdd }) {
       </div>
 
       {/* Info */}
-      <div className="mt-3 md:mt-5 text-left space-y-0.5 md:space-y-1">
-        <p className="product-category text-[8px] md:text-[9px] uppercase tracking-[0.25em] font-semibold text-gold/80">
+      <div className="mt-4 md:mt-6 text-left space-y-1.5 md:space-y-2">
+        <p className="product-category text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold text-gold">
           {product.category}
         </p>
-        <div className="flex justify-between items-start gap-2">
-          <h3 className="product-name text-xs md:text-sm font-serif leading-tight text-accent group-hover:text-gold transition-colors line-clamp-2 flex-1">
+        <div className="flex justify-between items-start gap-3">
+          <h3 className="product-name text-sm md:text-base font-serif font-medium leading-tight text-accent group-hover:text-gold transition-colors line-clamp-2 flex-1">
             {product.name}
           </h3>
-          <span className="product-price text-xs md:text-sm font-sans font-medium text-accent/90 whitespace-nowrap">
+          <span className="product-price text-sm md:text-base font-sans font-semibold text-accent whitespace-nowrap">
             {product.price > 0 ? `$${product.price.toLocaleString()}` : '-'}
           </span>
         </div>
-        <p className="product-desc text-[9px] md:text-[10px] text-accent/60 font-light italic truncate hidden sm:block">
+        <p className="product-desc text-[11px] md:text-xs text-accent/75 font-normal tracking-wide line-clamp-2 hidden sm:block">
           {product.description}
         </p>
       </div>
