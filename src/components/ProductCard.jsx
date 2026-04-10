@@ -28,13 +28,7 @@ function ProductCard({ product, onAdd }) {
         </div>
 
         {/* Badge Elite */}
-        {product.price > 1500 && (
-          <div className="absolute top-3 left-3 md:top-6 md:left-6">
-            <span className="bg-accent/90 backdrop-blur-sm text-white text-[7px] md:text-[8px] uppercase tracking-[0.3em] px-3 py-1 md:px-4 md:py-1.5 font-bold rounded-full">
-              Elite
-            </span>
-          </div>
-        )}
+
       </div>
 
       {/* Info */}
@@ -46,9 +40,6 @@ function ProductCard({ product, onAdd }) {
           <h3 className="product-name text-sm md:text-base font-serif font-medium leading-tight text-accent group-hover:text-gold transition-colors line-clamp-2 flex-1">
             {product.name}
           </h3>
-          <span className="product-price text-sm md:text-base font-sans font-semibold text-accent whitespace-nowrap">
-            {product.price > 0 ? `$${product.price.toLocaleString()}` : '-'}
-          </span>
         </div>
         <p className="product-desc text-[11px] md:text-xs text-accent/75 font-normal tracking-wide line-clamp-2 hidden sm:block">
           {product.description}
