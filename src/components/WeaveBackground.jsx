@@ -153,8 +153,16 @@ const WeaveBackground = () => {
         });
       }
 
-      // Limpieza de filas viejas para rendimiento
+      // Limpieza de filas viejas para rendimiento (Solo si no hemos terminado)
       if (s.wovenRows.length > 40) s.wovenRows.pop();
+
+      // Optimización: Detener la animación una vez que el tejido cubra la pantalla
+      const lastRow = s.wovenRows[s.wovenRows.length - 1];
+      if (lastRow && lastRow.y > s.height + 100) {
+        console.log("Berakah Loom: Weave complete. Entering static mode for resource optimization.");
+        cancelAnimationFrame(animationFrameId);
+        return;
+      }
 
       animationFrameId = requestAnimationFrame(render);
     };
