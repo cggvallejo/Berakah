@@ -5,7 +5,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_06af4328.jpg",
     "price": 500,
-    "description": "Una pieza maestra de trenzado a mano con superficie con carácter. Este diseño de bandoleras cuenta con detalles en cuero sintético, capturando la botín de artesanía fina."
+    "description": "Homenaje a Frida Kahlo en yute natural con vibrante bordado geométrico de alta precisión."
   },
   {
     "id": "d058ef1a-4395-48c7-8c7b-8e55fb3265b8",
@@ -13,7 +13,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_2a0067c2.jpg",
     "price": 581,
-    "description": "Una pieza maestra de urdimbre de fibra natural con textura táctil premium. Este diseño de bandoleras cuenta con herrajes metálicos, capturando la lujo consciente."
+    "description": "Patrón de aguacates sobre yute natural, ideal para un estilo orgánico, fresco y contemporáneo."
   },
   {
     "id": "c6a2aa11-eb63-4eb1-a3cf-a8768412c716",
@@ -21,7 +21,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_2b3cadb0.jpg",
     "price": 650,
-    "description": "Una pieza maestra de trenzado a mano con acabado rústico elegante. Este diseño de bandoleras cuenta con cierre reforzado, capturando la toque de distinción."
+    "description": "Artesanía en plenitud: diseño floral tradicional bordado con hilos de seda sobre fibra de yute orgánica."
   },
   {
     "id": "0bf5e6fa-4558-4205-866a-3a57468f46ba",
@@ -29,7 +29,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_2f208ffa.jpg",
     "price": 587,
-    "description": "Una pieza maestra de trama orgánica con acabado rústico elegante. Este diseño de bandoleras cuenta con cierre reforzado, capturando la esencia del México contemporáneo."
+    "description": "Tradición en cada fibra: la icónica muñeca Lele rodeada de un jardín festivo bordado a todo color."
   },
   {
     "id": "0c2d4e64-4abe-4745-8ee1-43815ab98ed9",
@@ -37,7 +37,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_36147601.jpg",
     "price": 559,
-    "description": "Una pieza maestra de urdimbre de fibra natural con superficie con carácter. Este diseño de bandoleras cuenta con herrajes metálicos, capturando la toque de distinción."
+    "description": "Espíritus ancestrales: patrón dinámico de perros Xolo en vibrantes colores neón sobre fondo contrastado."
   },
   {
     "id": "13b832cb-b20f-4e5b-9b51-4a9d0b1c8cb5",
@@ -45,7 +45,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_bandolera_con_cierre,_forrada_y_cinta_ajustable_75a71aa3.jpg",
     "price": 524,
-    "description": "Una pieza maestra de tejido artesanal de yute con esencia matérica. Este diseño de bandoleras cuenta con detalles en cuero sintético, capturando la lujo consciente."
+    "description": "Tradición viva: la muñeca Lele representada con una explosión de colores y motivos naturales vibrantes."
   },
   {
     "id": "c36812b4-17c0-463b-b1be-e897578d15a9",
@@ -53,7 +53,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_Cuadrada_1_cierre,_forrada_y_cuerda_ajustable_59160e5c.jpg",
     "price": 790,
-    "description": "Una pieza maestra de urdimbre de fibra natural con superficie con carácter. Este diseño de bolsas cuenta con detalles en cuero sintético, capturando la toque de distinción."
+    "description": "Nostalgia y cultura popular: el emblemático diseño 'Mi Mazapán' acompañado por nopales orgánicos en relieve."
   },
   {
     "id": "1414bb94-639b-4d69-befe-0f72cd993112",
@@ -61,7 +61,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_Cuadrada_1_cierre,_forrada_y_cuerda_ajustable_6dcabd25.jpg",
     "price": 762,
-    "description": "Una pieza maestra de trama orgánica con acabado rústico elegante. Este diseño de bolsas cuenta con detalles en cuero sintético, capturando la botín de artesanía fina."
+    "description": "Esencia urbana: el horizonte de México y sus monumentos emblemáticos capturados en un vibrante diseño bordado."
   },
   {
     "id": "6c5f5c87-ff3b-42e8-8f05-5a4a2855d3bf",
@@ -69,7 +69,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_Cuadrada_1_cierre,_forrada_y_cuerda_ajustable_82bc50cf.jpg",
     "price": 752,
-    "description": "Una pieza maestra de tejido artesanal de yute con textura táctil premium. Este diseño de bolsas cuenta con herrajes metálicos, capturando la toque de distinción."
+    "description": "Cultura en relieve: un vibrante collage de íconos mexicanos, desde pirámides hasta tradiciones culinarias, sobre yute natural."
   },
   {
     "id": "d4bd8f53-6d57-4455-850c-085e07ae973f",
@@ -77,7 +77,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_Cuadrada_1_cierre,_forrada_y_cuerda_ajustable_b7df13fb.jpg",
     "price": 744,
-    "description": "Una pieza maestra de urdimbre de fibra natural con acabado rústico elegante. Este diseño de bolsas cuenta con cierre reforzado, capturando la lujo consciente."
+    "description": "Alegría en cada detalle: vibrante escena festiva con papel picado y músicos en relieve sobre yute premium."
   },
   {
     "id": "41563868-d57a-4c01-8e79-f5638d42c48a",
@@ -85,7 +85,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_de_cilindro,_forrada,_con_1_cierre_y_cinta_ajustable_1307faa2.jpg",
     "price": 539,
-    "description": "Una pieza maestra de tejido artesanal de yute con superficie con carácter. Este diseño de bandoleras cuenta con herrajes metálicos, capturando la lujo consciente."
+    "description": "Naturaleza viva: delicado patrón de aves y follaje en tonos turquesa y carmín bordados sobre yute premium."
   },
   {
     "id": "076cd292-32a7-43da-9dfa-5b2841b7880b",
@@ -93,7 +93,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_de_cilindro,_forrada,_con_1_cierre_y_cinta_ajustable_1d945f4a.jpg",
     "price": 642,
-    "description": "Una pieza maestra de trama orgánica con acabado rústico elegante. Este diseño de bandoleras cuenta con forro interior de alta calidad, capturando la lujo consciente."
+    "description": "Luz y naturaleza: equilibrio perfecto de girasoles bordados sobre yute premium, aportando calidez y alegría."
   },
   {
     "id": "7e322af9-8fa6-4846-aae6-653d75ec49de",
@@ -101,7 +101,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_de_cilindro,_forrada,_con_1_cierre_y_cinta_ajustable_5ba1cba4.jpg",
     "price": 636,
-    "description": "Una pieza maestra de trenzado a mano con esencia matérica. Este diseño de bandoleras cuenta con forro interior de alta calidad, capturando la lujo consciente."
+    "description": "Patrón de aguacates sobre yute natural, ideal para un estilo orgánico, fresco y contemporáneo."
   },
   {
     "id": "46132692-dd49-45eb-b10a-39554667ee50",
@@ -109,7 +109,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_de_cilindro,_forrada,_con_1_cierre_y_cinta_ajustable_ad2cb299.jpg",
     "price": 673,
-    "description": "Una pieza maestra de tejido artesanal de yute con textura táctil premium. Este diseño de bandoleras cuenta con herrajes metálicos, capturando la lujo consciente."
+    "description": "Desierto en relieve: divertido y colorido patrón de cactáceas mexicanas sobre fondo de yute natural."
   },
   {
     "id": "78e8b0d4-92ef-49ed-bcf4-867341714911",
@@ -117,7 +117,7 @@ export const products = [
     "category": "Bandoleras",
     "image": "/images/Bolsa_de_cilindro,_forrada,_con_1_cierre_y_cinta_ajustable_b9d482d2.jpg",
     "price": 567,
-    "description": "Una pieza maestra de urdimbre de fibra natural con textura táctil premium. Este diseño de bandoleras cuenta con herrajes metálicos, capturando la lujo consciente."
+    "description": "Ritmo y textura: elegante patrón de notas musicales en negro sobre fibra orgánica de yute."
   },
   {
     "id": "8271cb01-4d33-4db4-96af-508ce4ea65c7",
@@ -133,7 +133,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_doble_cierre_y_forrada_2c082849.jpg",
     "price": 591,
-    "description": "Una pieza maestra de trenzado a mano con superficie con carácter. Este diseño de bolsas cuenta con detalles en cuero sintético, capturando la toque de distinción."
+    "description": "Inspiración artística: la esencia de Frida Kahlo rodeada de un universo de mariposas y flores en relieve."
   },
   {
     "id": "f3712af8-6000-4b6f-a256-ff0cf84dbfa3",
@@ -141,7 +141,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_doble_cierre_y_forrada_48465673.jpg",
     "price": 638,
-    "description": "Una pieza maestra de trenzado a mano con acabado rústico elegante. Este diseño de bolsas cuenta con forro interior de alta calidad, capturando la esencia del México contemporáneo."
+    "description": "Folclore mexicano: un detallado 'Árbol de la Vida' bordado en relieve, celebrando la naturaleza y la artesanía tradicional."
   },
   {
     "id": "0ac79eda-b2ed-4a02-aad3-ea52f5323582",
@@ -149,7 +149,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_doble_cierre_y_forrada_4e3f9e75.jpg",
     "price": 692,
-    "description": "Una pieza maestra de tejido artesanal de yute con esencia matérica. Este diseño de bolsas cuenta con cierre reforzado, capturando la toque de distinción."
+    "description": "Vuelo y color: un deslumbrante diseño de mariposas monarca en relieve sobre la fibra orgánica de yute natural."
   },
   {
     "id": "576418bb-2778-4225-825b-0b076405399e",
@@ -165,7 +165,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolsa_doble_cierre_y_forrada_57dd021e.jpg",
     "price": 718,
-    "description": "Una pieza maestra de tejido artesanal de yute con textura táctil premium. Este diseño de bolsas cuenta con cierre reforzado, capturando la esencia del México contemporáneo."
+    "description": "Tradición viva: el icónico diseño de la muñeca Lele capturado con ternura y color en esta bolsa artesanal de doble cierre."
   },
   {
     "id": "1071e0c4-b771-4957-b329-ccb1dd685f00",
@@ -173,7 +173,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/bolsa_redonda,_con_doble_cierre,_forrada_y_con_cinta_ajustable_0a6ee4b6.jpg",
     "price": 773,
-    "description": "Una pieza maestra de urdimbre de fibra natural con acabado rústico elegante. Este diseño de bolsas cuenta con detalles en cuero sintético, capturando la esencia del México contemporáneo."
+    "description": "Geometría sagrada: el misticismo del bordado Tenango en una silueta redonda contemporánea de fibra natural."
   },
   {
     "id": "ddfbcc3e-9f63-49db-8750-cb579f131ca7",
@@ -181,7 +181,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/bolsa_redonda,_con_doble_cierre,_forrada_y_con_cinta_ajustable_1109e77f.jpg",
     "price": 757,
-    "description": "Una pieza maestra de trama orgánica con esencia matérica. Este diseño de bolsas cuenta con detalles en cuero sintético, capturando la botín de artesanía fina."
+    "description": "Luz y naturaleza: equilibrio perfecto de girasoles bordados sobre yute premium, aportando calidez y alegría."
   },
   {
     "id": "ef867fc5-04bf-46c6-b73c-0b6a6ac8de70",
@@ -197,7 +197,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/bolsa_redonda,_con_doble_cierre,_forrada_y_con_cinta_ajustable_2066515d.jpg",
     "price": 772,
-    "description": "Una pieza maestra de trama orgánica con textura táctil premium. Este diseño de bolsas cuenta con forro interior de alta calidad, capturando la lujo consciente."
+    "description": "Encanto frutal: un fresco y vibrante diseño de manzanas rojas sobre yute natural, combinando simplicidad y elegancia artesanal."
   },
   {
     "id": "c5a15baf-d87f-496d-aa1c-d8d5aa9adacc",
@@ -429,7 +429,7 @@ export const products = [
     "category": "Bolsas",
     "image": "/images/Bolson_grande_con_cierre_8a8e5430.jpg",
     "price": 695,
-    "description": "Una pieza maestra de trama orgánica con textura táctil premium. Este diseño de bolsas cuenta con detalles en cuero sintético, capturando la toque de distinción."
+    "description": "Luz y naturaleza: equilibrio perfecto de girasoles bordados sobre yute premium, aportando calidez y alegría."
   },
   {
     "id": "2e9690b7-407c-4241-9626-829723569d99",
