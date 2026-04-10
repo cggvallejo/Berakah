@@ -33,10 +33,10 @@ function Locations() {
             <div className="h-[1px] w-8 bg-gold/30" />
           </div>
           
-          <div className="relative inline-flex p-2 bg-accent/5 backdrop-blur-md rounded-[28px] border border-accent/10 shadow-inner overflow-hidden">
+          <div className="relative inline-flex p-2 bg-accent rounded-[32px] border border-white/10 shadow-2xl shadow-black/20 overflow-hidden">
             {/* Sliding Pill Background (Visual feedback) */}
             <div 
-              className="absolute top-2 bottom-2 bg-accent rounded-[22px] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-xl shadow-accent/20"
+              className="absolute top-2 bottom-2 bg-white rounded-[26px] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
               style={{
                 left: `calc(0.5rem + ${activeTab * 50}%)`,
                 width: 'calc(50% - 0.5rem)'
@@ -47,13 +47,13 @@ function Locations() {
               <button
                 key={loc.id}
                 onClick={() => setActiveTab(index)}
-                className={`relative z-10 px-12 py-5 rounded-[22px] text-[11px] uppercase tracking-[0.4em] font-black transition-all duration-700 flex items-center gap-3 ${
+                className={`relative z-10 px-14 py-5 rounded-[26px] text-[11px] uppercase tracking-[0.4em] font-black transition-all duration-700 flex items-center gap-3 ${
                   activeTab === index 
-                  ? 'text-white' 
-                  : 'text-accent/30 hover:text-accent/60'
+                  ? 'text-accent' 
+                  : 'text-white/40 hover:text-white/80'
                 }`}
               >
-                <div className={`w-1.5 h-1.5 rounded-full transition-all duration-700 ${activeTab === index ? 'bg-gold animate-pulse' : 'bg-accent/10'}`} />
+                <div className={`w-1.5 h-1.5 rounded-full transition-all duration-700 ${activeTab === index ? 'bg-gold' : 'bg-white/10'}`} />
                 {loc.name.replace('Sucursal ', '')}
               </button>
             ))}
