@@ -1,5 +1,6 @@
 import React from 'react';
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import BrandLogo from './BrandLogo';
 
 import { settings } from '../data/settings';
 
@@ -8,7 +9,10 @@ function Footer() {
     <footer className="bg-accent text-white py-24">
       <div className="container grid md:grid-cols-4 gap-16">
         <div className="col-span-1 md:col-span-2">
-          <h2 className="text-4xl font-serif mb-8 tracking-tighter">BERAKAH</h2>
+          <BrandLogo 
+            variant="text" 
+            className="w-32 md:w-48 mb-6" 
+          />
           <p className="text-white/80 font-light max-w-sm mb-8 leading-loose italic">
             "Donde las manos artesanas mexicanas transforman la fibra natural en piezas de lujo eterno."
           </p>

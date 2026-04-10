@@ -42,37 +42,40 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-transparent">
-      {/* Dynamic Heritage Elements */}
-      <MexicanHeritage className="top-10 -left-20 w-[40vw] h-[40vw] rotate-12 opacity-10" />
-      <MexicanHeritage className="bottom-0 -right-20 w-[50vw] h-[50vw] -rotate-12 opacity-10" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent !pt-12 md:!pt-16">
+      {/* Dynamic Heritage Elements - Watermark Style */}
+      <MexicanHeritage className="top-10 -left-20 w-[40vw] h-[40vw] rotate-12 opacity-[0.05]" />
+      <MexicanHeritage className="bottom-0 -right-20 w-[50vw] h-[50vw] -rotate-12 opacity-[0.05]" />
       
-      {/* Weave Background Animation */}
-      <WeaveBackground />
-      
-      {/* Subtle organic texture pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style={{
-        backgroundImage: 'url("https://www.transparenttextures.com/patterns/pinstriped-suit.png")',
+      {/* Artisan Texture Overlay (Handmade Paper) */}
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{
+        backgroundImage: 'url("https://www.transparenttextures.com/patterns/handmade-paper.png")',
         mixBlendMode: 'multiply'
       }} />
 
-      <div ref={contentRef} className="container relative z-10 text-center max-w-4xl px-4 flex h-full flex-col items-center justify-between py-16 opacity-0">
-        <div className="shimmer-gold rounded-full px-4 py-1">
+      {/* Warm Ambient Light / Vignette */}
+      <div className="absolute inset-0 z-0 bg-gradient-radial from-transparent via-transparent to-sand/20 pointer-events-none" />
+
+      {/* Weave Background Animation - Zen Flow Field */}
+      <WeaveBackground />
+
+      <div ref={contentRef} className="container relative z-10 text-center max-w-4xl px-4 flex flex-col items-center justify-start pt-0 pb-0 opacity-0 min-h-[calc(100vh-4rem)]">
+        <div className="flex justify-center w-full mb-0">
           <BrandLogo 
-            className="text-[10vw] sm:text-[10rem] mt-4" 
-            subtitle={"Eclesiastes 3:1\nTodo tiene su tiempo, y todo lo que se quiere debajo del cielo tiene su hora."}
+            variant="full"
+            className="w-full max-w-[800px] -mt-12 md:-mt-20" 
           />
         </div>
         
-        <div className="flex flex-col items-center flex-grow justify-center relative">
+        <div className="flex flex-col items-center justify-center relative mt-0 mb-2 md:mb-4">
           {/* Decorative Frame Lines */}
           <div className="absolute -inset-x-10 top-0 bottom-0 border-x border-accent/5 pointer-events-none hidden md:block" />
           
-          <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl mb-4 md:mb-6 leading-[1.1] text-accent tracking-tighter uppercase font-light">
+          <h1 className="hero-title text-3xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-[1] text-accent tracking-tighter uppercase font-light">
             <span ref={title1Ref} className="block overflow-hidden">
               <span className="block">Artesanía en</span>
             </span>
-            <span ref={title2Ref} className="block italic font-light text-black/80 mt-2">
+            <span ref={title2Ref} className="block italic font-light text-black/80 mt-1 md:mt-2">
               Yute
             </span>
           </h1>

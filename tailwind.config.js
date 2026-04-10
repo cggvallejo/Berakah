@@ -9,8 +9,9 @@ export default {
       colors: {
         accent: "#4a3728",
         gold: "#d4af37",
-        green: "#006847",
-        red: "#ce1126",
+        "blue-premium": "#1d4ed8",
+        "magenta-premium": "#db2777",
+        "jute-light": "#f6f1ea",
         bg: "#fdfcf8",
       },
       fontFamily: {

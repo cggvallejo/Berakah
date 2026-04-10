@@ -35,8 +35,11 @@ function Navbar({ cartCount, openCart }) {
           </div>
         </div>
 
-        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${isScrolled ? 'opacity-100 scale-90' : 'opacity-0 scale-50 pointer-events-none'}`}>
-          <BrandLogo className="text-xl md:text-2xl" />
+        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-50 pointer-events-none'}`}>
+          <BrandLogo 
+            variant="text" 
+            className="w-24 md:w-32" 
+          />
         </div>
 
         <div className="flex gap-10 items-center">
