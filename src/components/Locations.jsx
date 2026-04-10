@@ -23,22 +23,45 @@ function Locations() {
           <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent mx-auto mt-12" />
         </div>
 
-        {/* Tab Selector - Diseño Flotante */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1.5 glass rounded-2xl shadow-premium-lg border border-accent/5">
+        {/* Tab Selector - Diseño Galería/Switch Premium */}
+        <div className="flex flex-col items-center mb-16">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-[1px] w-8 bg-gold/30" />
+            <span className="text-[10px] uppercase tracking-[0.4em] font-black text-accent/40 italic">
+              Selecciona una Boutique
+            </span>
+            <div className="h-[1px] w-8 bg-gold/30" />
+          </div>
+          
+          <div className="relative inline-flex p-2 bg-accent/5 backdrop-blur-md rounded-[28px] border border-accent/10 shadow-inner overflow-hidden">
+            {/* Sliding Pill Background (Visual feedback) */}
+            <div 
+              className="absolute top-2 bottom-2 bg-accent rounded-[22px] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-xl shadow-accent/20"
+              style={{
+                left: `calc(0.5rem + ${activeTab * 50}%)`,
+                width: 'calc(50% - 0.5rem)'
+              }}
+            />
+            
             {settings.locations.map((loc, index) => (
               <button
                 key={loc.id}
                 onClick={() => setActiveTab(index)}
-                className={`px-10 py-4 rounded-xl text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-700 ${
+                className={`relative z-10 px-12 py-5 rounded-[22px] text-[11px] uppercase tracking-[0.4em] font-black transition-all duration-700 flex items-center gap-3 ${
                   activeTab === index 
-                  ? 'bg-accent text-white shadow-xl scale-[1.02]' 
-                  : 'text-accent/40 hover:text-accent hover:bg-black/5'
+                  ? 'text-white' 
+                  : 'text-accent/30 hover:text-accent/60'
                 }`}
               >
+                <div className={`w-1.5 h-1.5 rounded-full transition-all duration-700 ${activeTab === index ? 'bg-gold animate-pulse' : 'bg-accent/10'}`} />
                 {loc.name.replace('Sucursal ', '')}
               </button>
             ))}
+          </div>
+          
+          <div className="mt-8 flex items-center gap-2 text-accent/30 animate-bounce duration-[2000ms]">
+            <ChevronRight className="rotate-90" size={12} />
+            <span className="text-[8px] uppercase tracking-[0.3em] font-bold">Explora opciones</span>
           </div>
         </div>
 
