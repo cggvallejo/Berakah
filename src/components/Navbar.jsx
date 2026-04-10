@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Instagram, Facebook, User } from 'lucide-react';
+import { ShoppingBag, Menu, X, Facebook, Instagram, User } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 import { settings } from '../data/settings';
 
@@ -24,7 +24,7 @@ function Navbar({ cartCount, openCart }) {
             className="hover:opacity-60 transition-all hover:scale-110 active:scale-95 group"
             aria-label="Cerrar Menú"
           >
-            <Menu size={32} strokeWidth={1} className="group-hover:rotate-90 transition-transform duration-500" />
+            <Menu size={42} strokeWidth={1.5} className="group-hover:rotate-90 transition-transform duration-500" />
           </button>
           
           <div className="hidden lg:flex gap-12 text-[13px] uppercase tracking-[0.4em] font-bold opacity-60">
@@ -43,18 +43,33 @@ function Navbar({ cartCount, openCart }) {
         </div>
 
         <div className="flex gap-10 items-center">
-          <div className="hidden lg:flex gap-8">
-            <Instagram size={20} className="opacity-20 hover:opacity-100 cursor-pointer transition-all hover:scale-125" />
+          <div className="hidden lg:flex gap-12">
+            <a 
+              href={settings.socialLinks.facebook} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <Facebook size={32} strokeWidth={1.5} className="opacity-100 cursor-pointer transition-all hover:scale-125 hover:text-[#1877F2]" />
+            </a>
+            <a 
+              href={settings.socialLinks.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram size={32} strokeWidth={1.5} className="opacity-100 cursor-pointer transition-all hover:scale-125 hover:text-[#E4405F]" />
+            </a>
           </div>
           
           <a href="/admin" className="hover:scale-110 transition-all active:scale-90" aria-label="Panel de Administración" title="Panel de Administración">
-            <User size={30} strokeWidth={1} />
+            <User size={40} strokeWidth={1.5} className="text-accent" />
           </a>
 
           <button onClick={openCart} className="flex items-center gap-2 relative hover:scale-110 transition-all active:scale-90 group" aria-label="Abrir Carrito">
-            <ShoppingBag size={32} strokeWidth={1} />
+            <ShoppingBag size={42} strokeWidth={1.5} className="text-accent" />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-gold text-white text-[12px] w-5 h-5 rounded-full flex items-center justify-center font-bold premium-shadow border-2 border-white">
+              <span className="absolute -top-1 -right-1 bg-gold text-white text-[13px] min-w-[24px] h-6 px-1 rounded-full flex items-center justify-center font-bold premium-shadow border-2 border-white">
                 {cartCount}
               </span>
             )}
@@ -119,8 +134,22 @@ function Navbar({ cartCount, openCart }) {
             </div>
             <div className="flex flex-col gap-3">
               <span className="mb-2 opacity-30">Síguenos</span>
-              <a href="#" className="hover:text-gold transition-colors">Instagram</a>
-              <a href="#" className="hover:text-gold transition-colors">Facebook</a>
+              <a 
+                href={settings.socialLinks.facebook} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-gold transition-colors flex items-center gap-2"
+              >
+                <Facebook size={16} strokeWidth={1.5} /> Facebook
+              </a>
+              <a 
+                href={settings.socialLinks.instagram} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-gold transition-colors flex items-center gap-2"
+              >
+                <Instagram size={16} strokeWidth={1.5} /> Instagram
+              </a>
             </div>
             <div className="md:text-right flex flex-col justify-end">
               <span>Berakah Boutique © 2026</span>

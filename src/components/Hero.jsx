@@ -66,6 +66,14 @@ function Hero() {
             className="w-full max-w-[800px] -mt-12 md:-mt-20" 
           />
         </div>
+
+        {/* Eclesiastes 3:1 Verse - Premium Subtitle */}
+        <div className="mb-8 opacity-40 hover:opacity-100 transition-opacity duration-1000">
+           <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-medium text-accent italic">
+             "Todo tiene su tiempo, y todo lo que se quiere debajo del cielo tiene su hora."
+           </p>
+           <div className="w-12 h-[0.5px] bg-gold mx-auto mt-4" />
+        </div>
         
         <div className="flex flex-col items-center justify-center relative mt-0 mb-2 md:mb-4">
           {/* Decorative Frame Lines */}

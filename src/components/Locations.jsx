@@ -7,34 +7,32 @@ function Locations() {
   const currentLoc = settings.locations[activeTab];
 
   return (
-    <section id="ubicaciones" className="py-24 bg-[#fcfaf7] relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gold/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-accent/5 blur-[100px] rounded-full" />
-      </div>
+    <section id="ubicaciones" className="py-24 bg-[#fdfcf8] relative overflow-hidden">
+      {/* Elementos Decorativos */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Centered Header */}
-        <div className="text-center mb-16 pt-10">
-          <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-gold mb-4 block">Experiencia Berakah</span>
-          <h2 className="text-5xl md:text-7xl font-serif text-accent mb-8 italic">Nuestras Ubicaciones</h2>
-          <p className="text-lg md:text-xl text-accent/70 max-w-2xl mx-auto font-light leading-relaxed">
-            Espacios diseñados para vivir la experiencia Berakah. Encuéntranos en el corazón de la Ciudad de México.
+        {/* Encabezado Editorial */}
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-gold mb-6 block drop-shadow-sm">Ubicación Estratégica</span>
+          <h2 className="text-5xl md:text-8xl font-serif text-accent mb-10 italic leading-none">Visita Nuestras Boutiques</h2>
+          <p className="text-base md:text-xl text-accent/70 font-light leading-relaxed tracking-wide italic max-w-2xl mx-auto">
+            "Espacios creados para experimentar la textura, el aroma y la esencia de la artesanía premium mexicana."
           </p>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-12" />
+          <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent mx-auto mt-12" />
         </div>
 
-        {/* Tab Selector */}
-        <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1.5 bg-white rounded-full shadow-xl border border-black/5">
+        {/* Tab Selector - Diseño Flotante */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex p-1.5 glass rounded-2xl shadow-premium-lg border border-accent/5">
             {settings.locations.map((loc, index) => (
               <button
                 key={loc.id}
                 onClick={() => setActiveTab(index)}
-                className={`px-8 py-3 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all duration-500 ${
+                className={`px-10 py-4 rounded-xl text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-700 ${
                   activeTab === index 
-                  ? 'bg-accent text-white shadow-md' 
+                  ? 'bg-accent text-white shadow-xl scale-[1.02]' 
                   : 'text-accent/40 hover:text-accent hover:bg-black/5'
                 }`}
               >
@@ -44,41 +42,46 @@ function Locations() {
           </div>
         </div>
 
-        {/* Full Interactive Map Layout */}
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-0 rounded-[40px] overflow-hidden bg-white shadow-2xl border border-black/5 min-h-[600px]">
+        {/* Main Content Card (Bento Style) */}
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-0 bg-white rounded-[48px] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-accent/5">
           
-          {/* Info Side (40%) */}
-          <div className="lg:col-span-2 p-12 md:p-16 flex flex-col justify-between border-r border-black/5 bg-white z-10">
-            <div>
-              <div className="flex items-center gap-3 mb-10 text-gold">
-                <Navigation size={18} />
-                <span className="text-[9px] uppercase tracking-[0.3em] font-black"> Boutique Oficial </span>
+          {/* Info Side (Col-span 5) */}
+          <div className="lg:col-span-5 p-10 md:p-20 flex flex-col justify-between bg-white relative">
+            {/* Watermark Logo */}
+            <div className="absolute top-10 right-10 opacity-[0.03] pointer-events-none">
+              <Navigation size={180} />
+            </div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-10 text-gold group">
+                <div className="w-8 h-[1px] bg-gold group-hover:w-12 transition-all duration-700" />
+                <span className="text-[9px] uppercase tracking-[0.5em] font-black"> Boutique Oficial </span>
               </div>
               
-              <h3 className="text-4xl font-serif text-accent mb-12 leading-tight tracking-tight">
+              <h3 className="text-4xl md:text-6xl font-serif text-accent mb-16 leading-[1.1] tracking-tighter">
                 {currentLoc.name}
               </h3>
               
-              <div className="space-y-12">
+              <div className="space-y-16">
                 <div className="flex gap-8 group">
-                  <div className="w-14 h-14 rounded-2xl bg-[#f8f5f0] flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm border border-black/5">
-                    <MapPin size={22} className="text-gold group-hover:text-white transition-colors" />
+                  <div className="w-16 h-16 rounded-3xl bg-sand/30 flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-700 shadow-sm border border-accent/10">
+                    <MapPin size={24} className="text-accent group-hover:text-white transition-colors" />
                   </div>
-                  <div>
-                    <p className="text-[9px] uppercase tracking-[0.4em] font-black text-gold mb-3 opacity-60">Dirección</p>
-                    <p className="text-accent font-medium leading-relaxed uppercase text-sm tracking-wide">
+                  <div className="flex flex-col justify-center">
+                    <p className="text-[9px] uppercase tracking-[0.5em] font-black text-gold mb-3 opacity-80">Dirección</p>
+                    <p className="text-accent font-medium leading-relaxed uppercase text-sm tracking-wider max-w-xs">
                       {currentLoc.address}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-8 group">
-                  <div className="w-14 h-14 rounded-2xl bg-[#f8f5f0] flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm border border-black/5">
-                    <Clock size={22} className="text-gold group-hover:text-white transition-colors" />
+                  <div className="w-16 h-16 rounded-3xl bg-sand/30 flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-700 shadow-sm border border-accent/10">
+                    <Clock size={24} className="text-accent group-hover:text-white transition-colors" />
                   </div>
-                  <div>
-                    <p className="text-[9px] uppercase tracking-[0.4em] font-black text-gold mb-3 opacity-60">Horario de Atención</p>
-                    <p className="text-accent font-medium text-sm tracking-wide">
+                  <div className="flex flex-col justify-center">
+                    <p className="text-[9px] uppercase tracking-[0.5em] font-black text-gold mb-3 opacity-80">Horario</p>
+                    <p className="text-accent font-medium text-sm tracking-widest italic">
                       {currentLoc.schedule}
                     </p>
                   </div>
@@ -86,54 +89,68 @@ function Locations() {
               </div>
             </div>
 
-            <div className="mt-16">
+            <div className="mt-20 relative z-10">
               <a 
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(currentLoc.address)}`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-4 bg-accent text-white py-5 px-8 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg hover:shadow-gold/30"
+                className="group relative flex items-center justify-between bg-accent text-white py-7 px-10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 hover:bg-gold"
               >
-                <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
-                Cómo llegar (Google Maps)
+                <div className="flex items-center gap-4 relative z-10">
+                  <ExternalLink size={18} className="group-hover:rotate-12 transition-transform duration-500" />
+                  <span className="text-[11px] font-black uppercase tracking-[0.4em]">Cómo llegar</span>
+                </div>
+                <ChevronRight className="relative z-10 group-hover:translate-x-2 transition-transform" size={20} />
+                
+                {/* Button Shimmer Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </a>
             </div>
           </div>
 
-          {/* Map Side (60%) */}
-          <div className="lg:col-span-3 h-[400px] lg:h-auto relative bg-[#f8f5f0]">
+          {/* Map Side (Col-span 7) */}
+          <div className="lg:col-span-7 h-[500px] lg:h-auto relative bg-sand/10 grayscale-[0.2] hover:grayscale-0 transition-all duration-1000">
             <iframe 
               title={`Mapa ${currentLoc.name}`}
               src={currentLoc.mapIframe}
-              className="w-full h-full contrast-[1.02] brightness-[1.01]"
+              className="w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-1000"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
             />
-            {/* Subtle Overlay to match aesthetic */}
-            <div className="absolute inset-0 pointer-events-none border-l border-black/5 shadow-[inset_20px_0_40px_-20px_rgba(0,0,0,0.05)]" />
+            {/* Artistic Border Overlay */}
+            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black/5 to-transparent pointer-events-none" />
           </div>
         </div>
 
-        {/* Centered Contact Strip */}
-        <div className="mt-20 max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center justify-center">
-          {settings.phones.map((phone, i) => (
-            <a 
-              key={i}
-              href={phone.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-6 group hover:translate-y-[-4px] transition-all duration-500"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-gold shadow-lg group-hover:bg-accent group-hover:text-white transition-all duration-700">
-                <Phone size={24} />
-              </div>
-              <div className="text-left">
-                <span className="text-[8px] uppercase tracking-[0.5em] font-black text-gold opacity-60">{phone.label}</span>
-                <p className="text-2xl font-serif text-accent group-hover:text-gold transition-colors">{phone.number}</p>
-              </div>
-              <ChevronRight className="text-gold/20 group-hover:text-gold group-hover:translate-x-2 transition-all" size={20} />
-            </a>
-          ))}
+        {/* Contact Strip - Cards Flotantes con Diseño Editorial */}
+        <div className="mt-24 max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[9px] uppercase tracking-[0.6em] font-black text-gold/40">Líneas de Atención Directa</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {settings.phones.map((phone, i) => (
+              <a 
+                key={i}
+                href={phone.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center bg-white p-10 rounded-[32px] border border-accent/5 shadow-premium hover:shadow-premium-lg hover:translate-y-[-8px] transition-all duration-700 text-center"
+              >
+                <div className="w-20 h-20 rounded-full bg-sand/20 flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-700 shadow-inner">
+                  <Phone size={28} strokeWidth={1.5} />
+                </div>
+                <span className="text-[9px] uppercase tracking-[0.5em] font-black text-gold mb-4 group-hover:text-accent transition-colors">
+                  {phone.label}
+                </span>
+                <p className="text-2xl font-serif text-accent tracking-tighter">
+                  {phone.number}
+                </p>
+                <div className="mt-6 w-8 h-[1px] bg-gold/30 group-hover:w-16 group-hover:bg-gold transition-all duration-700" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

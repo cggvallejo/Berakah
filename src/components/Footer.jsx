@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
 import { settings } from '../data/settings';
@@ -16,9 +16,23 @@ function Footer() {
           <p className="text-white/80 font-light max-w-sm mb-8 leading-loose italic">
             "Donde las manos artesanas mexicanas transforman la fibra natural en piezas de lujo eterno."
           </p>
-          <div className="flex gap-6">
-            <Instagram size={20} className="opacity-80 hover:opacity-100 cursor-pointer" />
-            <Facebook size={20} className="opacity-80 hover:opacity-100 cursor-pointer" />
+          <div className="flex gap-8">
+            <a 
+              href={settings.socialLinks.facebook} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <Facebook size={36} strokeWidth={1.5} className="opacity-100 cursor-pointer transition-all hover:scale-110 hover:text-[#1877F2]" />
+            </a>
+            <a 
+              href={settings.socialLinks.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram size={36} strokeWidth={1.5} className="opacity-100 cursor-pointer transition-all hover:scale-110 hover:text-[#E4405F]" />
+            </a>
           </div>
         </div>
 
