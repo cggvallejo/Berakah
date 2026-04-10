@@ -31,10 +31,10 @@ function ProcessStrip() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-accent/20 to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-24 max-w-4xl mx-auto flex flex-col items-center">
-          <span className="text-[10px] md:text-[12px] uppercase tracking-[0.5em] font-black text-gold mb-6 block drop-shadow-sm">Nuestro Compromiso</span>
-          <h2 className="text-4xl md:text-7xl font-serif text-accent mb-8 italic leading-tight text-center">La Maestría del Yute</h2>
-          <p className="text-accent/60 text-lg md:text-xl font-light leading-relaxed italic text-center max-w-2xl">
+        <div className="text-center mb-24 w-full flex flex-col items-center">
+          <span className="text-[10px] md:text-[12px] uppercase tracking-[0.5em] font-black text-gold mb-6 block drop-shadow-sm w-full text-center">Nuestro Compromiso</span>
+          <h2 className="text-4xl md:text-7xl font-serif text-accent mb-8 italic leading-tight text-center w-full">La Maestría del Yute</h2>
+          <p className="text-accent/60 text-lg md:text-xl font-light leading-relaxed italic text-center max-w-3xl mx-auto px-4">
             "Donde la paciencia de la naturaleza encuentra la precisión del maestro artesano."
           </p>
         </div>
