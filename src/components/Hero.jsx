@@ -59,22 +59,15 @@ function Hero() {
       {/* Weave Background Animation - Zen Flow Field */}
       <WeaveBackground />
 
-      <div ref={contentRef} className="container relative z-10 text-center max-w-4xl px-4 flex flex-col items-center justify-start pt-0 pb-0 opacity-0 min-h-[calc(100vh-4rem)]">
+      <div ref={contentRef} className="container relative z-10 text-center max-w-4xl px-4 flex flex-col items-center justify-start pt-0 pb-0 opacity-0 min-h-[calc(100vh-10rem)] -mt-24 md:-mt-32">
         <div className="flex justify-center w-full mb-0">
           <BrandLogo 
             variant="full"
-            className="w-full max-w-[800px] -mt-12 md:-mt-20" 
+            className="w-full max-w-[850px]" 
           />
         </div>
 
-        {/* Eclesiastes 3:1 Verse - Premium Subtitle */}
-        <div className="mb-8 opacity-40 hover:opacity-100 transition-opacity duration-1000">
-           <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-medium text-accent italic">
-             "Todo tiene su tiempo, y todo lo que se quiere debajo del cielo tiene su hora."
-           </p>
-           <div className="w-12 h-[0.5px] bg-gold mx-auto mt-4" />
-        </div>
-        
+
         <div className="flex flex-col items-center justify-center relative mt-0 mb-2 md:mb-4">
           {/* Decorative Frame Lines */}
           <div className="absolute -inset-x-10 top-0 bottom-0 border-x border-accent/5 pointer-events-none hidden md:block" />
