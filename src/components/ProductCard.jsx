@@ -18,10 +18,14 @@ function ProductCard({ product, onAdd }) {
         {/* Acciones — en desktop aparecen con hover, en mobile siempre visibles */}
         <div className="product-actions absolute bottom-4 right-4 md:bottom-6 md:right-6 flex flex-col gap-2 md:translate-x-12 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 transition-all duration-700">
           <button
-            onClick={() => onAdd(product)}
-            className="bg-white/95 backdrop-blur-sm text-accent w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center hover:bg-gold hover:text-white active:scale-90 transition-all duration-300 shadow-xl border border-accent/5"
-            title="Añadir a la bolsa"
-            aria-label={`Añadir ${product.name} al carrito`}
+            onClick={() => product.price > 0 && onAdd(product)}
+            disabled={product.price <= 0}
+            className={`w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl border 
+              ${product.price > 0 
+                ? 'bg-white/95 backdrop-blur-sm text-accent hover:bg-gold hover:text-white active:scale-90 border-accent/5' 
+                : 'bg-gray-100/50 backdrop-blur-sm text-gray-400 cursor-not-allowed border-gray-200'}`}
+            title={product.price > 0 ? "Añadir a la bolsa" : "Precio pendiente"}
+            aria-label={product.price > 0 ? `Añadir ${product.name} al carrito` : "Producto no disponible"}
           >
             <ShoppingBag size={16} strokeWidth={1.5} />
           </button>
