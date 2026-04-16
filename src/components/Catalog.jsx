@@ -19,7 +19,7 @@ function loadProducts() {
   }
 }
 
-function Catalog({ onAddToCart }) {
+function Catalog({ onAddToCart, onOpenProduct }) {
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [products, setProducts] = useState(loadProducts);
 
@@ -97,6 +97,7 @@ function Catalog({ onAddToCart }) {
               key={product.id} 
               product={product} 
               onAdd={onAddToCart} 
+              onOpenDetail={() => onOpenProduct(product)}
             />
           ))}
         </div>

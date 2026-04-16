@@ -1,24 +1,47 @@
 import React from 'react';
 import { ShoppingBag, Eye } from 'lucide-react';
 
-function ProductCard({ product, onAdd }) {
+function ProductCard({ product, onAdd, onOpenDetail }) {
   return (
     <div className="group relative flex flex-col bg-white overflow-hidden transition-all duration-700">
       {/* Imagen */}
-      <div className="relative aspect-[4/5] bg-bg overflow-hidden premium-shadow rounded-[24px] md:rounded-[32px] transition-all duration-700 group-hover:shadow-2xl">
+      <div 
+        className="relative aspect-[4/5] bg-bg overflow-hidden premium-shadow rounded-[24px] md:rounded-[32px] transition-all duration-700 group-hover:shadow-2xl cursor-pointer"
+        onClick={onOpenDetail}
+      >
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-[1.5s] scale-[1.12] group-hover:scale-[1.22]"
+          className="w-full h-full object-cover transition-transform duration-[1.5s] scale-[1.12] group-hover:scale-[1.22] no-logo-crop"
           style={{ objectPosition: 'center 8%' }}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700" />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700 flex items-center justify-center">
+           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-90 group-hover:scale-100">
+              <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white">
+                 <Eye size={24} strokeWidth={1.5} />
+              </div>
+           </div>
+        </div>
 
         {/* Acciones — en desktop aparecen con hover, en mobile siempre visibles */}
         <div className="product-actions absolute bottom-4 right-4 md:bottom-6 md:right-6 flex flex-col gap-2 md:translate-x-12 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 transition-all duration-700">
           <button
-            onClick={() => product.price > 0 && onAdd(product)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenDetail();
+            }}
+            className="w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl border bg-white/95 backdrop-blur-sm text-accent hover:bg-black hover:text-white border-accent/5"
+            title="Ver detalles"
+          >
+            <Eye size={16} strokeWidth={1.5} />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              product.price > 0 && onAdd(product);
+            }}
             disabled={product.price <= 0}
             className={`w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl border 
               ${product.price > 0 

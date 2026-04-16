@@ -140,7 +140,7 @@ const customDesigns = [
   }
 ];
 
-function CustomDesigns() {
+function CustomDesigns({ onOpenProduct }) {
   return (
     <section id="personalizados" className="py-24 bg-[#FCFAFA] relative overflow-hidden">
       {/* Decorative Ornaments */}
@@ -167,14 +167,15 @@ function CustomDesigns() {
           {customDesigns.map((item, index) => (
             <div 
               key={index} 
-              className="group relative rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-1000 border border-black/5 bg-white aspect-square flex items-center justify-center p-4"
+              onClick={() => onOpenProduct(item)}
+              className="group relative rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-1000 border border-black/5 bg-white aspect-square flex items-center justify-center p-4 cursor-pointer"
             >
               {/* Image Container */}
               <div className="w-full h-full relative z-0 flex items-center justify-center">
                 <img 
                   src={item.image} 
                   alt={item.title}
-                  className="max-w-full max-h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                  className="max-w-full max-h-full object-contain transition-transform duration-1000 group-hover:scale-110 no-logo-crop"
                 />
               </div>
               
@@ -237,7 +238,7 @@ function CustomDesigns() {
                 <img 
                   src="/images/custom/1.png" 
                   alt="Personalización"
-                  className="w-full h-full object-contain bg-white"
+                  className="w-full h-full object-contain bg-white no-logo-crop"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-accent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8 text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">

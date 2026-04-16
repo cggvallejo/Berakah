@@ -10,6 +10,7 @@ import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
 import CartModal from './components/CartModal';
 import AdminPanel from './components/AdminPanel';
+import ProductDetail from './components/ProductDetail';
 
 // Detectar ruta /admin
 const isAdminRoute = () => window.location.pathname === '/admin';
@@ -17,6 +18,7 @@ const isAdminRoute = () => window.location.pathname === '/admin';
 function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [isAdmin, setIsAdmin] = useState(isAdminRoute());
 
   // Escuchar cambios de ruta (por si navegan sin recargar)
@@ -47,10 +49,10 @@ function App() {
       <main>
         <Hero />
         <ProcessStrip />
-        <Catalog onAddToCart={addToCart} />
+        <Catalog onAddToCart={addToCart} onOpenProduct={setSelectedProduct} />
 
         <Locations />
-        <CustomDesigns />
+        <CustomDesigns onOpenProduct={setSelectedProduct} />
       </main>
 
       <Footer />
@@ -62,6 +64,14 @@ function App() {
           items={cart} 
           onClose={() => setIsCartOpen(false)} 
           onRemove={removeFromCart} 
+        />
+      )}
+
+      {selectedProduct && (
+        <ProductDetail 
+          product={selectedProduct} 
+          onClose={() => setSelectedProduct(null)} 
+          onAddToCart={addToCart}
         />
       )}
     </div>

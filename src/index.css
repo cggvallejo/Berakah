@@ -271,3 +271,10 @@ section { padding: var(--sp-section) 0; }
   letter-spacing: 0.2em;
   font-weight: 700;
 }
+
+/* ─── IMAGE UTILITIES ───────────────────────────────────────────────────────── */
+.no-logo-crop {
+  clip-path: inset(0 0 3% 0); /* Oculta el logo de Gemini en la esquina inferior */
+  transform: scale(1.03); /* Compensa el recorte sutilmente */
+  transform-origin: center top;
+}
