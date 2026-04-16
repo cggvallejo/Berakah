@@ -22,7 +22,7 @@ function ProductDetail({ product, onClose, onAddToCart }) {
       />
       
       {/* Modal Container */}
-      <div className="relative w-full max-w-6xl bg-white rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] md:h-[700px] animate-in slide-in-from-bottom-12 duration-700">
+      <div className="relative w-full max-w-6xl bg-white rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[95vh] md:h-auto md:min-h-[600px] md:max-h-[800px] animate-in slide-in-from-bottom-12 duration-700">
         
         {/* Close Button Mobile */}
         <button 
@@ -45,14 +45,14 @@ function ProductDetail({ product, onClose, onAddToCart }) {
              </div>
              
              {/* Decorative brand tag */}
-             <div className="absolute bottom-12 left-12 flex items-center gap-2 opacity-30">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-black text-accent">Berakah Premium</span>
+             <div className="absolute bottom-12 left-12 flex items-center gap-2 opacity-50">
+                <span className="text-[11px] uppercase tracking-[0.4em] font-black text-accent/60">Berakah Premium</span>
              </div>
           </div>
         </div>
 
         {/* Right: Content Side */}
-        <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col overflow-y-auto custom-scrollbar bg-white">
+        <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col overflow-y-auto custom-scrollbar bg-white">
           <div className="flex-1">
             {/* Header Info */}
             <div className="flex items-center gap-3 mb-6">
@@ -63,7 +63,7 @@ function ProductDetail({ product, onClose, onAddToCart }) {
               <div className="w-12 h-[1px] bg-gold/30" />
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-serif text-accent mb-6 italic leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-accent mb-8 italic leading-[1.1]">
               {product.title || product.name}
             </h2>
 
@@ -115,18 +115,19 @@ function ProductDetail({ product, onClose, onAddToCart }) {
           </div>
 
           {/* Footer Actions */}
-          <div className="space-y-6">
-            <div className="flex items-end justify-between mb-2">
+          <div className="space-y-8 mt-auto pt-8 border-t border-accent/5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-accent/40 font-bold mb-1">Inversión de Lujo</p>
-                <p className="text-3xl font-serif text-accent">
-                  {product.price > 0 ? `$${product.price}.00` : "Consultar Precio"}
-                </p>
-              </div>
-              
-              <div className="flex h-10 items-center gap-2 px-4 rounded-full bg-green/10 text-green-700 text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-green bg-green-600 animate-pulse" />
-                Disponible para envío
+                <p className="text-[10px] uppercase tracking-widest text-accent/40 font-bold mb-2">Inversión de Lujo</p>
+                <div className="flex items-baseline gap-4">
+                  <p className="text-3xl md:text-4xl font-serif text-accent leading-none">
+                    {product.price > 0 ? `$${product.price}.00` : "Consultar Precio"}
+                  </p>
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-green-700 text-[9px] font-bold uppercase tracking-widest border border-green-100">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                    Disponible
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -139,7 +140,7 @@ function ProductDetail({ product, onClose, onAddToCart }) {
                      window.open("https://wa.me/525573945771", "_blank");
                    }
                 }}
-                className="flex-1 group flex items-center justify-center gap-4 bg-accent hover:bg-accent/90 text-white py-6 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 shadow-xl hover:shadow-accent/40 active:scale-95"
+                className="flex-1 group flex items-center justify-center gap-4 bg-accent hover:bg-gold text-white py-5 md:py-6 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 shadow-xl hover:shadow-gold/20 active:scale-95"
               >
                 <ShoppingBag size={18} />
                 <span>{product.price > 0 ? "Añadir a la Bolsa" : "Solicitar a Medida"}</span>
@@ -153,7 +154,7 @@ function ProductDetail({ product, onClose, onAddToCart }) {
               </button>
             </div>
             
-            <p className="text-center text-[9px] text-accent/30 font-bold uppercase tracking-[0.2em]">
+            <p className="text-center text-[9px] text-accent/20 font-bold uppercase tracking-[0.3em] pb-4">
               Envío de cortesía a todo el mundo · Seguro incluido
             </p>
           </div>
