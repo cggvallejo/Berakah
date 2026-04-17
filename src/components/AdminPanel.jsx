@@ -9,7 +9,7 @@ const STORAGE_KEY = 'berakah_products_override';
 const SETTINGS_STORAGE_KEY = 'berakah_settings_override';
 
 // ─── Categorías disponibles ──────────────────────────────────────────────────
-const CATEGORIES = ['Bandoleras', 'Bolsas', 'Mochilas', 'Portacelulares', 'Esenciales'];
+const CATEGORIES = ['Bandoleras', 'Bolsas', 'Mochilas', 'Portacelulares', 'Esenciales', 'Nuestros Diseños Personalizados'];
 
 // ─── Hook: productos con persistencia ──────────────────────────────────────
 function useAdminProducts() {

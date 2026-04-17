@@ -7,7 +7,7 @@ import { products as defaultProducts } from '../data/products';
 import ProductCard from './ProductCard';
 
 const STORAGE_KEY = 'berakah_products_override';
-const CATEGORIES = ["Todos", "Bandoleras", "Bolsas", "Mochilas", "Portacelulares", "Esenciales"];
+const CATEGORIES = ["Todos", "Bandoleras", "Bolsas", "Mochilas", "Portacelulares", "Esenciales", "Nuestros Diseños Personalizados"];
 
 // Leer productos con cambios del admin (localStorage) o usar los originales
 function loadProducts() {
@@ -92,7 +92,7 @@ function Catalog({ onAddToCart, onOpenProduct }) {
         </div>
 
         <div className="premium-grid">
-          {filteredProducts.slice(0, 32).map(product => (
+          {filteredProducts.map(product => (
             <ProductCard 
               key={product.id} 
               product={product} 

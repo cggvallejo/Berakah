@@ -506,7 +506,7 @@ export const products = [
   {
     "id": "c3f6ac71-05d1-4f4f-b066-f6569691e120",
     "name": "Bolsa Artesanal Premium",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_00adcd3d.jpg",
     "price": 0,
     "description": "El Corazón: icónico diseño inspirado en la lotería mexicana, un símbolo de pasión y tradición sobre yute premium."
@@ -514,7 +514,7 @@ export const products = [
   {
     "id": "4faad899-6e81-44ef-b99e-6b164e0113e1",
     "name": "Bolsa Artesanal Premium - Variante 2",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0307ffcf.jpg",
     "price": 0,
     "description": "Dulce Lele: la emblemática muñeca de Querétaro, símbolo de resistencia y alegría, capturada en un bordado detallado."
@@ -522,7 +522,7 @@ export const products = [
   {
     "id": "e06a5158-baf8-44c9-96cf-c6312f4f3507",
     "name": "Bolsa Artesanal Premium - Variante 3",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0421499e.jpg",
     "price": 0,
     "description": "Fantasía Otomí: coloridos Tenangos que danzan sobre la fibra natural, representando la fauna y flora de la Sierra de Hidalgo."
@@ -530,7 +530,7 @@ export const products = [
   {
     "id": "45c751be-e214-4160-bef3-99347289fde9",
     "name": "Bolsa Artesanal Premium - Variante 4",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_067aa543.jpg",
     "price": 0,
     "description": "Vuelo Monarca: la elegancia de la mariposa migratoria en un diseño de arte fluido que celebra la libertad y la naturaleza."
@@ -538,7 +538,7 @@ export const products = [
   {
     "id": "77309b16-506c-43c8-82ff-20f72cf9e54a",
     "name": "Bolsa Artesanal Premium - Variante 5",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0aac92e8.jpg",
     "price": 0,
     "description": "La Luna: misticismo nocturno inspirado en la lotería, un diseño sereno para quienes buscan un toque de magia cotidiana."
@@ -546,7 +546,7 @@ export const products = [
   {
     "id": "63adca0f-8266-4c86-9211-9fcd128fe781",
     "name": "Bolsa Artesanal Premium - Variante 6",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0b5cae47.jpg",
     "price": 0,
     "description": "Colibrí Sagrado: mensajero de buenos deseos, bordado con precisión para resaltar sobre la textura cruda del yute."
@@ -554,7 +554,7 @@ export const products = [
   {
     "id": "d28a1ba6-d9c2-43b3-afe0-70cfceed01b9",
     "name": "Bolsa Artesanal Premium - Variante 7",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0be070a3.jpg",
     "price": 0,
     "description": "Frida en Flor: un retrato contemporáneo de la icónica artista, rodeada de la vegetación que inspiró su obra."
@@ -562,7 +562,7 @@ export const products = [
   {
     "id": "d52048a4-c617-4398-9f59-73321b53c5b4",
     "name": "Bolsa Artesanal Premium - Variante 8",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_0d2e3a19.jpg",
     "price": 0,
     "description": "Catrina Chic: una visión moderna de la muerte como celebración, con toques florales y colores vibrantes de temporada."
@@ -570,7 +570,7 @@ export const products = [
   {
     "id": "a2829693-1bcd-4ab7-95d0-018703e0f1b4",
     "name": "Bolsa Artesanal Premium - Variante 9",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_10f4da6f.jpg",
     "price": 0,
     "description": "Mazapán y Dulzura: diseño nostálgico que evoca los dulces tradicionales de México, una pieza que genera sonrisas."
@@ -578,7 +578,7 @@ export const products = [
   {
     "id": "0c0b7b03-2aee-4eeb-be5d-cd3b25536a58",
     "name": "Bolsa Artesanal Premium - Variante 10",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_12a1a54e.jpg",
     "price": 0,
     "description": "Guardián Xolo: el perro sagrado en estilo neón, un puente entre la tradición milenaria y el diseño urbano actual."
@@ -586,7 +586,7 @@ export const products = [
   {
     "id": "c14b6dce-f088-4415-a578-923d79003e27",
     "name": "Bolsa Artesanal Premium - Variante 11",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_1d20bf51.jpg",
     "price": 0,
     "description": "Aura Mística: diseño inspirado en la protección y el cosmos, con tonalidades azules profundas y destellos dorados."
@@ -594,7 +594,7 @@ export const products = [
   {
     "id": "f97f3126-a6c1-4fdf-99c3-cc1ef0538d0b",
     "name": "Bolsa Artesanal Premium - Variante 12",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_1f25e84a.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -602,7 +602,7 @@ export const products = [
   {
     "id": "892ab534-531c-445c-a17a-16dc5de64e78",
     "name": "Bolsa Artesanal Premium - Variante 13",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_20aee140.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -610,7 +610,7 @@ export const products = [
   {
     "id": "12c347ce-5687-44c8-9599-148f6d1d73e9",
     "name": "Bolsa Artesanal Premium - Variante 14",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_24a5967c.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -618,7 +618,7 @@ export const products = [
   {
     "id": "42a0866a-ad32-48f4-bf4d-4d140613c818",
     "name": "Bolsa Artesanal Premium - Variante 15",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_26c16d7d.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -626,7 +626,7 @@ export const products = [
   {
     "id": "96b3a529-fb60-4ed8-9376-8a9ff68c98bc",
     "name": "Bolsa Artesanal Premium - Variante 16",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_2a98ed95.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -634,7 +634,7 @@ export const products = [
   {
     "id": "c67a7afb-3cc7-454c-9774-9198e8dd5587",
     "name": "Bolsa Artesanal Premium - Variante 17",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_2bd9afd9.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -642,7 +642,7 @@ export const products = [
   {
     "id": "6b9b4094-f3ef-452c-9db4-8bf305009957",
     "name": "Bolsa Artesanal Premium - Variante 18",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_35f7de0d.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -650,7 +650,7 @@ export const products = [
   {
     "id": "3b91bb27-cac4-4e0f-b83b-42b96864aef5",
     "name": "Bolsa Artesanal Premium - Variante 19",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3a38ae64.jpg",
     "price": 0,
     "description": "Herencia de Teotihuacán: imponente bordado de la Pirámide del Sol, un tributo a la grandeza de nuestras raíces prehispánicas."
@@ -658,7 +658,7 @@ export const products = [
   {
     "id": "aef92e09-ed8b-43dd-8cfa-37d9ad03ef93",
     "name": "Bolsa Artesanal Premium - Variante 20",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3a487655.jpg",
     "price": 0,
     "description": "Guerrero Águila: fuerza y nobleza capturadas en fibra de yute, un diseño que evoca el valor de la cultura mexica."
@@ -666,7 +666,7 @@ export const products = [
   {
     "id": "8fc8d27b-8a46-4d69-a56c-8a57f80f2e7c",
     "name": "Bolsa Artesanal Premium - Variante 21",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3ae406ec.jpg",
     "price": 0,
     "description": "Espíritu de Coyoacán: la icónica Casa Azul y el quiosco tradicional bordados para llevar un pedazo de historia contigo."
@@ -674,7 +674,7 @@ export const products = [
   {
     "id": "297eba70-0e4d-4266-9c6c-d3a50342826e",
     "name": "Bolsa Artesanal Premium - Variante 22",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_3d528015.jpg",
     "price": 0,
     "description": "Mosaico de Frida: una composición geométrica y colorida que celebra la expresión artística de la pintora más famosa de México."
@@ -682,7 +682,7 @@ export const products = [
   {
     "id": "9cb8b9bd-3512-4758-ac78-5fe4560f0415",
     "name": "Bolsa Artesanal Premium - Variante 23",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_43a711b2.jpg",
     "price": 0,
     "description": "Vibranza Floral: el estilo de Zamora llevado al bordado, donde cada pétalo cuenta una historia de dedicación artesanal."
@@ -690,7 +690,7 @@ export const products = [
   {
     "id": "c21cc440-aae2-4817-80e6-dde0c31b1aae",
     "name": "Bolsa Artesanal Premium - Variante 24",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_43d3c5e8.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -698,7 +698,7 @@ export const products = [
   {
     "id": "c1dc004e-19fe-447e-ade3-9de508693548",
     "name": "Bolsa Artesanal Premium - Variante 25",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_4759db18.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -706,7 +706,7 @@ export const products = [
   {
     "id": "0fe83e51-cb32-4d09-bed2-1fe1bdca7673",
     "name": "Bolsa Artesanal Premium - Variante 26",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_484b9912.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -714,7 +714,7 @@ export const products = [
   {
     "id": "616abb32-85f6-43cc-bfd2-412a95ffc0ce",
     "name": "Bolsa Artesanal Premium - Variante 27",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_4868fa90.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -722,7 +722,7 @@ export const products = [
   {
     "id": "1f3a6456-b152-40e4-907c-425eca381356",
     "name": "Bolsa Artesanal Premium - Variante 28",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_4a04d6e4.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -730,7 +730,7 @@ export const products = [
   {
     "id": "a974798c-3717-4f3b-8abc-cf66c6cf14f0",
     "name": "Bolsa Artesanal Premium - Variante 29",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_56265a38.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -738,7 +738,7 @@ export const products = [
   {
     "id": "378655e5-ca29-407e-a573-c0e970aa67f0",
     "name": "Bolsa Artesanal Premium - Variante 30",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5aa0ca7a.jpg",
     "price": 0,
     "description": "Minimalismo Rústico: la pureza del yute crudo en su máxima expresión, resaltada por una estructura firme y herrajes premium."
@@ -746,7 +746,7 @@ export const products = [
   {
     "id": "38abe42a-35b5-4a48-b419-32402afb18c4",
     "name": "Bolsa Artesanal Premium - Variante 31",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5ad421aa.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -754,7 +754,7 @@ export const products = [
   {
     "id": "bf731b6b-a89f-4973-80b7-d4f3037f7fea",
     "name": "Bolsa Artesanal Premium - Variante 32",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5bcd1cf6.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -762,7 +762,7 @@ export const products = [
   {
     "id": "6078745b-c386-4238-8a4b-727049cddd0d",
     "name": "Bolsa Artesanal Premium - Variante 33",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_5cc2dabb.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -770,7 +770,7 @@ export const products = [
   {
     "id": "c66c296d-1dd5-4a6e-8951-9f34dd3ddd26",
     "name": "Bolsa Artesanal Premium - Variante 34",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_60babe18.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -778,7 +778,7 @@ export const products = [
   {
     "id": "a11c0c8c-1dcf-4925-82d1-0a00da2161c9",
     "name": "Bolsa Artesanal Premium - Variante 35",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_6ab7106c.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -786,7 +786,7 @@ export const products = [
   {
     "id": "773b289d-6bb7-4bee-a60d-0bc613b9152f",
     "name": "Bolsa Artesanal Premium - Variante 36",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_7ae1052c.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -794,7 +794,7 @@ export const products = [
   {
     "id": "970b7d02-b849-48cc-ab8f-31d18d7c8db5",
     "name": "Bolsa Artesanal Premium - Variante 37",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_8281ca2e.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -802,7 +802,7 @@ export const products = [
   {
     "id": "31934a32-db47-49d3-a63b-a8ae7df4d0d7",
     "name": "Bolsa Artesanal Premium - Variante 38",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_86853071.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -810,7 +810,7 @@ export const products = [
   {
     "id": "c7aa3891-d292-46c6-9ab3-c28c25a62b5a",
     "name": "Bolsa Artesanal Premium - Variante 39",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_90cb9c6e.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -818,7 +818,7 @@ export const products = [
   {
     "id": "3fab9c92-49c7-4d59-a873-bc4c347a5740",
     "name": "Bolsa Artesanal Premium - Variante 40",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_b0face75.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -826,7 +826,7 @@ export const products = [
   {
     "id": "1c6bcf88-3c3e-4a7d-ab19-9e9b777f3e0c",
     "name": "Bolsa Artesanal Premium - Variante 41",
-    "category": "Bolsas",
+    "category": "Nuestros Diseños Personalizados",
     "image": "/images/Estos_son_los_diseños_que_manejo_para_las_bolsas_c8506d73.jpg",
     "price": 0,
     "description": "Artesanía premium: diseño único tejido a mano con fibras naturales de yute, capturando la esencia del estilo artesanal contemporáneo."
@@ -1262,5 +1262,45 @@ export const products = [
     "image": "/images/Porta_celular_con_doble_cierre,_cinta_larga_dc4331b5.jpg",
     "price": 0,
     "description": "Libertad con Estilo: portacelular con cinta larga ajustable, el complemento perfecto para un look boho-chic contemporáneo."
+  },
+  {
+    "id": "882a8934-118c-4b36-a579-994c5036b439",
+    "name": "Bolsa Totem Colibrí Mensajero",
+    "category": "Bolsas",
+    "image": "/images/Bolsa_Totem_Colibri_Mensajero.png",
+    "price": 0,
+    "description": "Elegancia Alada: un diseño vibrante con el colibrí mensajero sobre un fondo geométrico moderno. Ideal para quienes buscan un toque de naturaleza y color en su día a día."
+  },
+  {
+    "id": "f28923a1-43e6-42d6-96b6-391d4e4c5f92",
+    "name": "Bolsa Totem Lele Festiva",
+    "category": "Bolsas",
+    "image": "/images/Bolsa_Totem_Lele_Festiva.png",
+    "price": 0,
+    "description": "Tradición Viva: capturando la alegría de la muñeca Lele en un formato contemporáneo. Una pieza que celebra las raíces mexicanas con un estilo audaz y lleno de vida."
+  },
+  {
+    "id": "b4b071f5-ab72-5453-2492-0d36b439c439",
+    "name": "Bolsa de Yute Colibrí Imperial",
+    "category": "Bolsas",
+    "image": "/images/Bolsa_de_Yute_Colibri_Imperial.png",
+    "price": 0,
+    "description": "Esencia Natural: bolsa de yute artesanal con un bordado exquisito de colibrí en tonos turquesa. Fusión perfecta entre sustentabilidad y diseño premium de autor."
+  },
+  {
+    "id": "d238722f-a35c-094b-ff17-c803c439c439",
+    "name": "Bolsa de Yute Monarca en Vuelo",
+    "category": "Bolsas",
+    "image": "/images/Bolsa_de_Yute_Monarca_en_Vuelo.png",
+    "price": 0,
+    "description": "Migración y Color: la majestuosa mariposa monarca adorna este diseño de yute premium. Un tributo a la biodiversidad de México con acabados artesanales de alta calidad."
+  },
+  {
+    "id": "dd3471f5-aa7b-7b05-cdab-7cdbc439c439",
+    "name": "Bolsa de Yute Lele Artesanal",
+    "category": "Bolsas",
+    "image": "/images/Bolsa_de_Yute_Lele_Artesanal.png",
+    "price": 0,
+    "description": "Diseño de la muñeca Lele sobre un fondo de tejido chevron multicolor. La estructura de yute natural y el bordado detallado hacen de esta bolsa una pieza única de arte textil."
   }
 ];
