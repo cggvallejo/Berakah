@@ -6,7 +6,7 @@ const customDesigns = [
     title: "Esencia de Chiapas",
     person: "Claudia",
     location: "San Cristóbal",
-    image: "/images/custom/1.png",
+    image: "/images/custom/1.webp",
     type: "Bolsa Bordada",
     size: "large"
   },
@@ -14,7 +14,7 @@ const customDesigns = [
     title: "Tradición Yucateca",
     person: "Mauricio",
     location: "Mérida",
-    image: "/images/custom/2.png",
+    image: "/images/custom/2.webp",
     type: "Bolsa de Gala",
     size: "medium"
   },
@@ -22,7 +22,7 @@ const customDesigns = [
     title: "Brisa de Nayarit",
     person: "Lorena",
     location: "Sayulita",
-    image: "/images/custom/3.png",
+    image: "/images/custom/3.webp",
     type: "Bolsa de Yute",
     size: "small"
   },
@@ -30,7 +30,7 @@ const customDesigns = [
     title: "Mística Oaxaqueña",
     person: "Roberto",
     location: "Monte Albán",
-    image: "/images/custom/4.png",
+    image: "/images/custom/4.webp",
     type: "Cesta de Lujo",
     size: "small"
   },
@@ -38,7 +38,7 @@ const customDesigns = [
     title: "Alma de Jalisco",
     person: "Sofía",
     location: "Tlaquepaque",
-    image: "/images/custom/5.png",
+    image: "/images/custom/5.webp",
     type: "Bolsa Premium",
     size: "large"
   },
@@ -46,7 +46,7 @@ const customDesigns = [
     title: "Sol de Sonora",
     person: "Gabriel",
     location: "Hermosillo",
-    image: "/images/custom/6.png",
+    image: "/images/custom/6.webp",
     type: "Monedero",
     size: "small"
   },
@@ -54,7 +54,7 @@ const customDesigns = [
     title: "Encanto Veracruzano",
     person: "Isabella",
     location: "Tlacotalpan",
-    image: "/images/custom/7.png",
+    image: "/images/custom/7.webp",
     type: "Bolsa Artesanal",
     size: "medium"
   },
@@ -62,7 +62,7 @@ const customDesigns = [
     title: "Raíces de Zacatecas",
     person: "Fernando",
     location: "Jerez",
-    image: "/images/custom/8.png",
+    image: "/images/custom/8.webp",
     type: "Bolsa de Mano",
     size: "small"
   },
@@ -70,7 +70,7 @@ const customDesigns = [
     title: "Vibras de Tulum",
     person: "Daniela",
     location: "Quintana Roo",
-    image: "/images/custom/9.png",
+    image: "/images/custom/9.webp",
     type: "Bolsa de Playa Luxe",
     size: "small"
   },
@@ -78,7 +78,7 @@ const customDesigns = [
     title: "Puebla - Talavera Real",
     person: "Andrés",
     location: "Cholula",
-    image: "/images/custom/10.png",
+    image: "/images/custom/10.webp",
     type: "Bolsa Personalizada",
     size: "medium"
   },
@@ -86,7 +86,7 @@ const customDesigns = [
     title: "Cielo de Querétaro",
     person: "Paola",
     location: "Peña de Bernal",
-    image: "/images/custom/11.png",
+    image: "/images/custom/11.webp",
     type: "Monedero",
     size: "small"
   },
@@ -94,7 +94,7 @@ const customDesigns = [
     title: "Guanajuato - Callejón del Beso",
     person: "Mateo",
     location: "San Miguel",
-    image: "/images/custom/12.png",
+    image: "/images/custom/12.webp",
     type: "Bolsa Romántica",
     size: "small"
   },
@@ -102,7 +102,7 @@ const customDesigns = [
     title: "Baja - Azul Profundo",
     person: "Valentina",
     location: "Los Cabos",
-    image: "/images/custom/13.png",
+    image: "/images/custom/13.webp",
     type: "Bolsa de Viaje",
     size: "large"
   },
@@ -110,7 +110,7 @@ const customDesigns = [
     title: "Michoacán - Mariposa Monarca",
     person: "Leonardo",
     location: "Pátzcuaro",
-    image: "/images/custom/14.png",
+    image: "/images/custom/14.webp",
     type: "Bolsa Temática",
     size: "small"
   },
@@ -118,7 +118,7 @@ const customDesigns = [
     title: "Colores de Campeche",
     person: "Regina",
     location: "Edzná",
-    image: "/images/custom/15.png",
+    image: "/images/custom/15.webp",
     type: "Bolsa Típica",
     size: "medium"
   },
@@ -126,7 +126,7 @@ const customDesigns = [
     title: "Tabasco - Selva Viva",
     person: "Hugo",
     location: "Villahermosa",
-    image: "/images/custom/16.png",
+    image: "/images/custom/16.webp",
     type: "Bolsa Ecológica",
     size: "small"
   },
@@ -134,7 +134,7 @@ const customDesigns = [
     title: "Durango - Alacrán de Oro",
     person: "Natalia",
     location: "Mapimí",
-    image: "/images/custom/17.png",
+    image: "/images/custom/17.webp",
     type: "Bolsa de Colección",
     size: "small"
   }
@@ -175,6 +175,7 @@ function CustomDesigns({ onOpenProduct }) {
                 <img 
                   src={item.image} 
                   alt={item.title}
+                  loading="lazy"
                   className="max-w-full max-h-full object-contain transition-transform duration-1000 group-hover:scale-110 no-logo-crop"
                 />
               </div>
@@ -196,7 +197,7 @@ function CustomDesigns({ onOpenProduct }) {
         {/* Custom CTA Section */}
         <div className="mt-32">
           <div className="relative rounded-[60px] bg-accent overflow-hidden group">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.webp')] opacity-5" />
             <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold/10 rounded-full blur-[100px] animate-pulse" />
             <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-[100px]" />
             
@@ -236,7 +237,7 @@ function CustomDesigns({ onOpenProduct }) {
               
               <div className="relative w-full md:w-[400px] aspect-square rounded-[40px] overflow-hidden border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-1000">
                 <img 
-                  src="/images/custom/1.png" 
+                  src="/images/custom/1.webp" 
                   alt="Personalización"
                   className="w-full h-full object-contain bg-white no-logo-crop"
                 />

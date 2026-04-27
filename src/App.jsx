@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Locations from './components/Locations';
+import Testimonials from './components/Testimonials';
 import Catalog from './components/Catalog';
 import CustomDesigns from './components/CustomDesigns';
 import ProcessStrip from './components/ProcessStrip';

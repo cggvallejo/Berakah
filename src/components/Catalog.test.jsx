@@ -54,7 +54,7 @@ describe('Catalog Component', () => {
         id: 'mock-id-1',
         name: 'Mock Overridden Product',
         category: 'Bandoleras',
-        image: '/mock-image.jpg',
+        image: '/mock-image.webp',
         price: 999,
         description: 'Mock Description'
       }

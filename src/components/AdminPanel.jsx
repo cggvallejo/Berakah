@@ -296,7 +296,7 @@ function EditModal({ product, onSave, onClose, isSyncing }) {
                     alt={form.name}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     style={{ objectPosition: 'center 8%' }}
-                    onError={e => { e.target.src = '/images/placeholder.jpg'; }}
+                    onError={e => { e.target.src = '/images/placeholder.webp'; }}
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all flex flex-col items-center justify-center text-white">
                     <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

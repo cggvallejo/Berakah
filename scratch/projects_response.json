@@ -1,0 +1,1 @@
+{"id":1,"jsonrpc":"2.0","result":{"content":[{"text":"The bound service account is deleted or disabled. The service account bound to the API key must be active.","type":"text"}],"isError":true}}
