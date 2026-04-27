@@ -7,10 +7,17 @@ export const settings = {
   locations: [
     {
       id: '1',
-      name: 'Carnitas Berakah Cancún',
-      address: 'Avenida Tulum SM 20, Cancún, Quintana Roo, México',
-      mapIframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59511.026725805562!2d-86.8293!3d21.1602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4c2b05aed191a1%3A0x63359d95f82c4!2zQ2FuY8O6biwgUS5SLiwgTcObeGljbw!5e0!3m2!1ses!2smx!4v1712100000000!5m2!1ses!2smx',
-      schedule: 'Martes a Jueves: 9:00 AM - 3:00 PM'
+      name: 'Sucursal Peña y Peña',
+      address: 'Peña y peña #54, Centro Histórico, CDMX',
+      mapIframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.026725805562!2d-99.1293!3d19.4402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f933f7!2zQ2UuIE1hcnRpbiBQZcOxYSB5IFBlw7FhIDU0!5e0!3m2!1ses!2smx!4v1712100000000!5m2!1ses!2smx',
+      schedule: 'Lunes a Sábado: 9:00 AM - 6:00 PM'
+    },
+    {
+      id: '2',
+      name: 'Sucursal Plaza Izazaga',
+      address: 'Plaza Izazaga #89 local 1445-A Piso #14, Centro, CDMX',
+      mapIframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5932!2d-99.1362!3d19.4262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fed3!2sPlaza%20Izazaga%2089!5e0!3m2!1ses!2smx!4v1712100000000!5m2!1ses!2smx',
+      schedule: 'Lunes a Domingo: 10:00 AM - 7:00 PM'
     }
   ],
   testimonials: [
